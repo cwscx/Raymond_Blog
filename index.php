@@ -3,23 +3,26 @@
 <head>
 	<title>Raymond Shi's homepage</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
 </head>
 <body>
+	<!-- Bootstrap's js requires jquery. So jquery needs to included first -->
+	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	
 	<div class="container">
 		<!-- nav bar -->
 		<div id="menu" class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-header">
-				<button class="btn btn-info navbar-toggle">
-					<span class="glyphicon glyphicon-th-large"></span>
+				<button type="button" class="btn-info navbar-toggle" 
+						data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="glyphicon glyphicon-th-list"></span>
 				</button>
 				<div class="navbar-brand">
 					<a href="." style="text-decoration:none"><h3>Raymond's Blog</h3></a>
 				</div>
 			</div>
 
-			<div class="navbar-collapse collapse">
+			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="active nav"><a href=".">Home</a></li>
 					<li class="nav"><a href="about.php">About</a></li>

@@ -20,7 +20,7 @@
 	$name='';
 	$email='';
 	$category='';
-	$comments='';
+	$comment='';
 	$ok=true;
 
 	if(isset($_POST['submit']))
@@ -40,10 +40,10 @@
 		else
 			$category = $_POST['category'];
 
-		if(!isset($_POST['comments']) || $_POST['comments'] === '')
+		if(!isset($_POST['comment']) || $_POST['comment'] === '')
 			$ok = false;
 		else
-			$comments = $_POST['comments'];
+			$comment = $_POST['comment'];
 	}
 
 	if($ok)
@@ -85,8 +85,9 @@
 		<h1>Contact Me</h1>
 		<p>Tell me anything that intrigues you! We can talk about fascinating ideas, stories, places, etc. together! </p>
 
-		<div class="well <?php
-			if($ok === false)
+		<div class="col-lg-8 col-md-8 well <?php
+			// When the form is submitted and everything is ok or the form is unsubmitted
+			if((isset($_POST['submit']) && $ok) || !isset($_POST['submit']))
 				echo hidden;
 		?>">
 			<p>Oooooops...You don't wanna message me T^T?</p>

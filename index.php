@@ -18,7 +18,7 @@
 					<span class="glyphicon glyphicon-th-list"></span>
 				</button>
 				<div class="navbar-brand">
-					<a href="." style="text-decoration:none"><h3>Raymond's Blog</h3></a>
+					<a href="." style="text-decoration:none"><h3 style="color:#EEE">Raymond's Blog</h3></a>
 				</div>
 			</div>
 
@@ -26,10 +26,12 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="active nav"><a href=".">Home</a></li>
 					<li class="nav"><a href="about.php">About</a></li>
-					<li class="nav"><a href="contact.php">Contact</a></li>
+					<li class="nav"><a href="contact.html">Contact</a></li>
 				</ul>
 			</div>
 		</div>
+
+
 		<h1>I'm still working on it</h1>
 	</div>
 </body>

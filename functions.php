@@ -1,13 +1,5 @@
 <?php
 	/*
-	 * Navbar template
-	 */
-	function navbar_template()
-	{
-		readfile("./template/navbar.tmpl.html");
-	}
-
-	/*
 	 * Build up sql connection of given database. 
 	 * If the given name is not created, create one new database.
 	 * Return the db connection.

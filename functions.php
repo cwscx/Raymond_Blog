@@ -108,10 +108,23 @@
 	}
 
 	/*
-	 * Create a new User
+	 * Create a new User. If the username or the email is repeated, the user will not be added.
 	 */
-	function insert_user($username, $email, $password, $isAdmin)
+	function insert_user($db, $username, $email, $password, $isAdmin)
 	{
+		$hash = password_hash($password, PASSWORD_DEFAULT);
 
+		if(check_exist($db, 'username', $username) &&
+		   check_exist($db, 'email', $email))
+		{
+			// printf's parameters' %s must be surrounded with ''
+			$sql = sprintf("INSERT INTO blog.users (username, email, password, isAdmin) VALUES ('%s', '%s', '%s', %d)",
+							mysqli_real_escape_string($db, $username),
+							mysqli_real_escape_string($db, $email),
+							mysqli_real_escape_string($db, $hash),
+							mysqli_real_escape_string($db, $isAdmin));
+			$result = mysqli_query($db, $sql);
+		}
 	}
+
 ?>

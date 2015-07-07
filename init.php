@@ -16,18 +16,10 @@
 
 	/* Check the administrator exists. If there's none create a new one (me). */
 	$hasAdmin = check_exist($db, 'isAdmin', 1);
-	
+
 	if(!$hasAdmin)
 	{
-		$hash = password_hash("ray@1224cwscx", PASSWORD_DEFAULT);
-
-		// printf's parameters' %s must be surrounded with ''
-		$sql = sprintf("INSERT INTO blog.users (username, email, password, isAdmin) VALUES ('%s', '%s', '%s', %d)",
-						mysqli_real_escape_string($db, 'Raymond Shi'),
-						mysqli_real_escape_string($db, 'shengyang.shi@hotmail.com'),
-						mysqli_real_escape_string($db, $hash),
-						mysqli_real_escape_string($db, 1));
-		$result = mysqli_query($db, $sql);
+		insert_user($db, 'Raymond Shi', 'shengyang.shi@hotmail.com', 'ray@1224cwscx', 1);
 	}
 	
 	mysqli_close($db);

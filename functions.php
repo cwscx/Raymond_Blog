@@ -26,46 +26,6 @@
 	}
 
 	/*
-	 * Check whether the passed in username/email is the administrator
-	 */
-	function check_admin($db, $para)
-	{
-		if(is_string($para))
-		{
-			$ok = false;
-
-			// Check both username and email
-			$sqluser = sprintf("SELECT * FROM users WHERE username LIKE '%s'", mysqli_real_escape_string($db, $para));
-			$sqlemail = sprintf("SELECT * FROM users WHERE email LIKE '%s'", mysqli_real_escape_string($db, $para));
-
-			/* Once found any paired key-value pair, return true directly */
-			// Check username first
-			$result = mysqli_query($db, $sqluser);
-			$row = mysqli_fetch_assoc($result);
-
-			if($row && sizeof($row) !== 0)
-			{
-				if($row['isAdmin'] == 1)
-					return true;
-			}
-
-			// Check email then
-			$result = mysqli_query($db, $sqlemail);
-			$row = mysqli_fetch_assoc($result);
-			if($row && sizeof($row) !== 0)
-			{
-				if($row['isAdmin'] == 1)
-					return true;
-			}
-
-			return $ok;
-		}
-		else
-			throw new Exception("String parameter required.");
-	}
-
-
-	/*
 	 * Check whether the passed in key-value pair exists
 	 */
 	function check_exist($db, $para, $expect_val)
@@ -73,19 +33,10 @@
 		if(is_string($para))
 		{
 			$ok = true;
-			$sql = NULL;
-			if($para === 'isAdmin')
-			{
-				$sql = sprintf("SELECT * FROM users WHERE %s LIKE %d", 
-								mysqli_real_escape_string($db, $para),
-								mysqli_real_escape_string($db, $expect_val));
-			}
-			else
-			{
-				$sql = sprintf("SELECT * FROM users WHERE %s LIKE '%s'", 
-								mysqli_real_escape_string($db, $para),
-								mysqli_real_escape_string($db, $expect_val));
-			}
+			$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%s'", 
+							mysqli_real_escape_string($db, $para),
+							mysqli_real_escape_string($db, $expect_val));
+
 			$result = mysqli_query($db, $sql);
 			$row = mysqli_fetch_assoc($result);  // Transfer select outcome to an array
 
@@ -101,19 +52,15 @@
 	/*
 	 * Create a new User. If the username or the email is repeated, the user will not be added.
 	 */
-	function insert_user($db, $username, $email, $password, $isAdmin)
+	function insert_article($db, $title, $subtitle, $article)
 	{
-		$hash = password_hash($password, PASSWORD_DEFAULT);
-
-		if(!check_exist($db, 'username', $username) &&
-		   !check_exist($db, 'email', $email))
+		if(!check_exist($db, 'title', $title))
 		{
 			// printf's parameters' %s must be surrounded with ''
-			$sql = sprintf("INSERT INTO blog.users (username, email, password, isAdmin) VALUES ('%s', '%s', '%s', %d)",
-							mysqli_real_escape_string($db, $username),
-							mysqli_real_escape_string($db, $email),
-							mysqli_real_escape_string($db, $hash),
-							mysqli_real_escape_string($db, $isAdmin));
+			$sql = sprintf("INSERT INTO blog.articles (title, subtitle, article) VALUES ('%s', '%s', '%s')",
+							mysqli_real_escape_string($db, $title),
+							mysqli_real_escape_string($db, $subtitle),
+							mysqli_real_escape_string($db, $article));
 			$result = mysqli_query($db, $sql);
 		}
 	}

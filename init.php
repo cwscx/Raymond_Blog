@@ -2,7 +2,7 @@
 	require_once("./functions.php");
 	$db = sql_connection("blog");
 
-	// Create Table to store usrs
+	// Create the user Table to store usrs
 	$sql = "CREATE TABLE users
 	(
 		id int(4) NOT NULL AUTO_INCREMENT,
@@ -14,12 +14,10 @@
 	)";	// Use tinyint(1) to express boolean
 	$result = mysqli_query($db, $sql);
 
+	/* Check the administrator exists. If there's none create a new one (me). */
+	$hasAdmin = check_exist($db, 'isAdmin', 1);
 	
-	$sql = "SELECT * FROM users WHERE isAdmin=1";
-	$result = mysqli_query($db, $sql);
-	$row = mysqli_fetch_assoc($result);  // Transfer select outcome to an array
-
-	if(!$row || sizeof($row) === 0)
+	if(!$hasAdmin)
 	{
 		$hash = password_hash("ray@1224cwscx", PASSWORD_DEFAULT);
 

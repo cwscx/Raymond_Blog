@@ -43,7 +43,7 @@
 
 	if($ok)
 	{
-		$db = mysql_con();
+		//$db = mysql_con('blog_contact');
 	}
 ?>
 

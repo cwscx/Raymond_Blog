@@ -1,3 +1,6 @@
+<?php
+	require_once("functions.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,30 +11,56 @@
 	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	
-	<div class="container">
-		<!-- nav bar -->
-		<div id="menu" class="navbar navbar-default navbar-fixed-top">
-			<div class="navbar-header">
-				<button type="button" class="btn-info navbar-toggle" 
-						data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="glyphicon glyphicon-th-list"></span>
-				</button>
-				<div class="navbar-brand">
-					<a href="." style="text-decoration:none"><h3 style="color:#eee">Raymond's Blog</h3></a>
-				</div>
-			</div>
+<?php
+	$name='';
+	$email='';
+	$category='';
+	$comments='';
+	$ok=true;
 
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="nav"><a href="index.php">Home</a></li>
-					<li class="nav"><a href="about.php">About</a></li>
-					<li class="active nav"><a href=".">Contact</a></li>
-				</ul>
-			</div>
-		</div>
+	if(isset($_POST['submit']))
+	{
+		if(!isset($_POST['name']) || $_POST['name'] === '')
+			$ok = false;
+		else
+			$name = $_POST['name'];
+
+		if(!isset($_POST['email']) || $_POST['email'] === '')
+			$ok = false;
+		else
+			$email = $_POST['email'];
+
+		if(!isset($_POST['category']) || $_POST['category'] === '')
+			$ok = false;
+		else
+			$category = $_POST['category'];
+
+		if(!isset($_POST['comments']) || $_POST['comments'] === '')
+			$ok = false;
+		else
+			$comments = $_POST['comments'];
+	}
+
+	if($ok)
+	{
+		$db = mysql_con();
+	}
+?>
+
+	<div class="container">
+		<?php
+			navbar_template();
+		?>
 
 		<h1>Contact Me</h1>
 		<p>Tell me anything that intrigues you! We can talk about fascinating ideas, stories, places, etc. together! </p>
+
+		<div class="well <?php
+			if($ok === false)
+				echo hidden;
+		?>">
+			<p>Oooooops...You don't wanna message me T^T?</p>
+		</div>
 
 		<br/>
 		<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -49,7 +78,7 @@
 				<div class="form-group">
 					<label for="category">Category</label>
 					<select class="form-control" name="category">
-						<option value="idea">Idea</option>
+						<option value="idea" selected>Idea</option>
 						<option value="food">Food</option>
 						<option vlaue="place">Place & Landscape</option>
 						<option value="sport">Sports</option>
@@ -60,7 +89,7 @@
 					<label for="comment">Comments</label>
 					<textarea name="comment" rows="5" class="form-control" placeholder="e.g. I love u~"></textarea>
 				</div>
-				<input class="btn btn-primary" type="submit" value="Sumbit" />
+				<input class="btn btn-primary" type="submit" name="submit" value="Sumbit" />
 			</form>
 		</div>
 	</div>

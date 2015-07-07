@@ -93,7 +93,6 @@
 				$sql = sprintf("SELECT * FROM users WHERE %s LIKE '%s'", 
 								mysqli_real_escape_string($db, $para),
 								mysqli_real_escape_string($db, $expect_val));
-
 			}
 			$result = mysqli_query($db, $sql);
 			$row = mysqli_fetch_assoc($result);  // Transfer select outcome to an array
@@ -114,8 +113,8 @@
 	{
 		$hash = password_hash($password, PASSWORD_DEFAULT);
 
-		if(check_exist($db, 'username', $username) &&
-		   check_exist($db, 'email', $email))
+		if(!check_exist($db, 'username', $username) &&
+		   !check_exist($db, 'email', $email))
 		{
 			// printf's parameters' %s must be surrounded with ''
 			$sql = sprintf("INSERT INTO blog.users (username, email, password, isAdmin) VALUES ('%s', '%s', '%s', %d)",

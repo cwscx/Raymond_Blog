@@ -62,7 +62,7 @@
 	/*
 	 * Create a new article. If the title is repeated, the article won't be added.
 	 */
-	function insert_article($db, $title, $category, $tags, $article)
+	function insert_article($db, $title, $category, $tags, $intro, $article)
 	{
 		if(!check_exist($db, 'title', $title))
 		{
@@ -75,11 +75,12 @@
 			$string_array = implode(',', $tags);
 
 			// printf's parameters' %s must be surrounded with ''
-			$sql = sprintf("INSERT INTO blog.articles (title, category, tags, article, time, clicks) 
-							VALUES ('%s', '%s', '%s', '%s', now(), %d)",
+			$sql = sprintf("INSERT INTO blog.articles (title, category, tags, intro, article, time, clicks) 
+							VALUES ('%s', '%s', '%s', '%s', '%s', now(), %d)",
 							mysqli_real_escape_string($db, $title),
 							mysqli_real_escape_string($db, $category),
 							mysqli_real_escape_string($db, $string_array),
+							mysqli_real_escape_string($db, $intro),
 							mysqli_real_escape_string($db, $article),
 							0);
 			$result = mysqli_query($db, $sql);

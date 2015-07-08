@@ -43,7 +43,7 @@
 		<!-- navbar ended -->
 
 		<h2 >Literally, this is Raymond Shi's Personal Blog</h2>
-		<p><!-- Fill this later --></p>
+		<p style="font-size:15px">Focus on Data Mining, Machine Learning, Web/Mobile application. --- Let's go Geek.</p>
 		
 		<!-- blogs -->
 		<?php
@@ -59,7 +59,7 @@
 
 					// Try to concat blogs together
 					// Head, subline, category 
-					$blogs = "<div class='col-lg-8 col-md-8'>
+					$blogs = "<div class='caption col-lg-8 col-md-8'>
 								<h3 style='font-family: sans-serif'>
 									<a style='color:black' href='index.php?val=%s'>%s</a>
 								</h3>
@@ -80,6 +80,9 @@
 					// Date
 					$blogs = $blogs . "|&nbsp;&nbsp;Date:&nbsp;&nbsp;";
 					$blogs = $blogs . sprintf("%s", htmlspecialchars($row['time'])) . '</p>';
+
+					// Article
+					$blogs = $blogs . sprintf("%s", htmlspecialchars($row['intro']));
 
 					// End
 					$blogs = $blogs . "</div>";

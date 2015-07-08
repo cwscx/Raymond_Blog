@@ -6,7 +6,7 @@
 				<span class="glyphicon glyphicon-th-list"></span>
 		</button>
 		<div class="navbar-brand">
-			<a href="." style="text-decoration:none"><h3 style="color:#EEE">Raymonds Blog</h3></a>
+			<a href="." style="text-decoration:none"><h3 style="color:#EEE">Raymond's Blog</h3></a>
 		</div>
 	</div>
 
@@ -15,7 +15,7 @@
 			<li class="nav <?php 
 				if($_SESSION['current-page'] === 'index')
 					echo active;
-			?>"><a href="index.php">Home</a></li>
+			?>"><a href=".">Home</a></li>
 			<li class="nav <?php
 				if($_SESSION['current-page'] === 'about')
 					echo active;

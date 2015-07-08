@@ -33,6 +33,7 @@
 		<h2 >Literally, this is Raymond Shi's Personal Blog</h2>
 		<p style="font-size:15px">Focus on Data Mining, Machine Learning, Web/Mobile application. --- Let's go Geek.</p>
 		
+		<div class='caption col-lg-8 col-md-8'>
 		<!-- blogs -->
 		<?php
 			$db = sql_connection('blog');       // database
@@ -42,48 +43,14 @@
 			{
 				foreach($result as $row)
 				{
-					// Transfer the tags from string to array
-					$tags = explode(',', $row['tags']);
-
-					// Try to concat blogs together
-					// Head, subline, category 
-					$blogs = "<div class='caption col-lg-8 col-md-8'>
-								<h3 style='font-family: sans-serif'>
-									<a style='color:black' href='index.php?val=%s'>%s</a>
-								</h3>
-							<hr/>
-							<p style='color:#aaa'>
-								Category:&nbsp; 
-								<a href='category.php?val=%s'>%s</a>&nbsp;&nbsp;";
-
-					// Tags
-					$blogs = $blogs . "|&nbsp;&nbsp;Tags:&nbsp;&nbsp;";
-					foreach($tags as $value)
-					{
-						$blogs = $blogs . sprintf("<a href='tag.php?val=%s'>%s</a>&nbsp;&nbsp;",
-													htmlspecialchars($value),
-													htmlspecialchars($value));
-					}
-
-					// Date
-					$blogs = $blogs . "|&nbsp;&nbsp;Date:&nbsp;&nbsp;";
-					$blogs = $blogs . sprintf("%s", htmlspecialchars($row['time'])) . '</p>';
-
-					// Article
-					$blogs = $blogs . sprintf("%s", htmlspecialchars($row['intro']));
-
-					// End
-					$blogs = $blogs . "</div>";
-
-					// Print it out
-					printf($blogs,
-						htmlspecialchars($row['title']),
-						htmlspecialchars($row['title']),
-						htmlspecialchars($row['category']),
-						htmlspecialchars($row['category']));
+					// Title, info and introduction for the article
+					title($row['title']);
+					info($row['category'], $row['tags'], $row['time']);
+					intro($row['intro']);
 				}
 			}
 		?>
+		</div>
 	</div>
 </body>
 </html>

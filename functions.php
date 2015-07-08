@@ -1,7 +1,66 @@
 <?php
+	/*
+	 * Get navbar template for the page.
+	 */
 	function navbar_template()
 	{
 		require_once('./template/navbar.tmpl.php');
+	}
+
+	/*
+	 * Print the title for an article
+	 */
+	function title($title)
+	{
+		printf("<h3 style='font-family: sans-serif'>
+			<a style='color:black' href='%s'>%s</a>
+		</h3>
+		<hr/>",
+		htmlspecialchars($title),
+		htmlspecialchars($title));
+	}
+
+	/*
+	 * Print the info of the article.
+	 * Category, tags and time included
+	 */
+	function info($category, $tags, $time)
+	{
+		$tags_array = array();
+		// Check the tags as an array
+		if(!is_array($tags))
+			$tags_array = explode(',', $tags); 	// Transfer the tags from string to array
+		else
+			$tags_array = $tags;
+
+		// Category
+		printf("<p style='color:#999'>
+					Category:&nbsp; 
+					<a href='category.php?val=%s'>%s</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;",
+				htmlspecialchars($category),
+				htmlspecialchars($category));
+
+		// Tags
+		print("Tags:&nbsp;&nbsp;");
+		foreach($tags_array as $value)
+		{	
+			printf("<a href='tag.php?val=%s'>%s</a>&nbsp;&nbsp;",
+					htmlspecialchars($value),
+					htmlspecialchars($value));
+		}
+
+		// Date
+		printf("|&nbsp;&nbsp;Date:&nbsp;&nbsp;%s</p>", 
+				htmlspecialchars($time));
+	}
+
+	/*
+	 * Print the introduction of the article
+	 */
+	function intro($introduction)
+	{
+		printf("<p>%s</p>", htmlspecialchars($introduction));
 	}
 
 	/*
@@ -93,5 +152,4 @@
 		else
 			throw new Exception('The title alreasy exists.');
 	}
-
 ?>

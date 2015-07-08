@@ -196,8 +196,21 @@
 							mysqli_real_escape_string($db, $article),
 							0);
 			$result = mysqli_query($db, $sql);
+			return $result;
 		}
 		else
 			throw new Exception('The title alreasy exists.');
+	}
+
+	
+	function insert_advice($db, $name, $email, $category, $comment)
+	{
+		$sql = sprintf("INSERT INTO blog.advice (name, email, category, comment) VALUES ('%s', '%s', '%s', '%s')",
+						mysqli_real_escape_string($db, $name),
+						mysqli_real_escape_string($db, $email),
+						mysqli_real_escape_string($db, $category),
+						mysqli_real_escape_string($db, $comment));
+		$result = mysqli_query($db, $sql);
+		return $result;
 	}
 ?>

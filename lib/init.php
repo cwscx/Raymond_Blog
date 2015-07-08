@@ -36,23 +36,16 @@
 		// echo $e -> getMessage();
 	}
 
-	mysqli_close($db);
-
-	/*
-	 * db to store contact/advice info
-	 */
-	$advice = sql_connection("advice");
-
 	$sql = "CREATE TABLE advice
 	(
 		id int(8) NOT NULL AUTO_INCREMENT,
-		PRIMARY KEY(id),
+		UNIQUE KEY(id),
 		name varchar(25) NOT NULL,
 		email varchar(50) NOT NULL,
 		category varchar(25) NOT NULL,
-		comments text(65535) NOT NULL
+		comment text(65535) NOT NULL
 	)";
-	$result = mysqli_query($advice, $sql);
+	$result = mysqli_query($db, $sql);
 
-	mysqli_close($advice);
+	mysqli_close($db);
 ?>

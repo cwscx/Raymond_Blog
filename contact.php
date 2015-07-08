@@ -43,13 +43,13 @@
 			$ok = false;
 		else
 			$comment = $_POST['comment'];
-	}
 
-	if($ok)
-	{
-		$advice = sql_connection('advice');
-
-		mysqli_close($advice);
+		if($ok)
+		{
+			$db = sql_connection('blog');
+			$result = insert_advice($db, $name, $email, $category, $comment);
+			mysqli_close($db);
+		}
 	}
 ?>
 
@@ -65,9 +65,18 @@
 		<div class="col-lg-8 col-md-8 well <?php
 			// When the form is submitted and everything is ok or the form is unsubmitted
 			if((isset($_POST['submit']) && $ok) || !isset($_POST['submit']))
-				echo hidden;
+				echo 'hidden';
 		?>">
 			<p>Oooooops...You don't wanna message me T^T?</p>
+		</div>
+
+		<!-- success message -->
+		<div class="col-lg-8 col-md-8 well <?php
+			// When the form is submitted and everything is ok or the form is unsubmitted
+			if(!(isset($_POST['submit']) && $ok))
+				echo 'hidden';
+		?>">
+			<p>Thanks for your comments! I'll reply to you ASAP. ^v^ </p>
 		</div>
 
 		<br/>
@@ -76,21 +85,40 @@
 				<div class="form-group">
 					<label for="name">Name</label>
 					<input type="text" name="name" class="form-control" 
-						   placeholder="e.g. Raymond Shi"/>
+						   placeholder="e.g. Raymond Shi" <?php 
+						   		printf("value=%s", $name);
+						   ?> >
 				</div>
 				<div class="form-group">
 					<label for="email">Eamil</label>
 					<input type="email" name="email" class="form-control" 
-						   placeholder="e.g. example@example.com"/>
+						   placeholder="e.g. example@example.com" <?php 
+						   		printf("value=%s", $email);
+						   ?> >
 				</div>
 				<div class="form-group">
 					<label for="category">Category</label>
 					<select class="form-control" name="category">
-						<option value="idea" selected>Idea</option>
-						<option value="food">Food</option>
-						<option vlaue="place">Place & Landscape</option>
-						<option value="sport">Sports</option>
-						<option value="other">Other</option>
+						<option value="idea" <?php 
+							if($category === 'idea')
+								echo 'selected';
+						?>>Idea</option>
+						<option value="food" <?php 
+							if($category === 'food')
+								echo 'selected';
+						?>>Food</option>
+						<option value="place" <?php 
+							if($category === 'place')
+								echo 'selected';
+						?>>Place & Landscape</option>
+						<option value="sport" <?php 
+							if($category === 'sport')
+								echo 'selected';
+						?>>Sports</option>
+						<option value="other" <?php 
+							if($category === 'other')
+								echo 'selected';
+						?>>Other</option>
 					</select>
 				</div>
 				<div class="form-group">

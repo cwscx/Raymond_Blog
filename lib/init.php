@@ -1,5 +1,5 @@
 <?php
-	require_once("./functions.php");
+	require_once(dirname(__FILE__) . '/functions.php');
 	$db = sql_connection("blog");
 
 	// Create the user Table to store usrs

@@ -1274,11 +1274,13 @@ h2,
 .h2 {
   font-size: 30px;
   font-family: "Apple Chancery", "Lucida Console", "Times", "cursive";
+  color: #2c3e50;
 }
 h3,
 .h3 {
   font-size: 24px;
   font-family: "Apple Chancery", "Lucida Console", "Times", "cursive";
+  color: #2c3e50;
 }
 h4,
 .h4 {

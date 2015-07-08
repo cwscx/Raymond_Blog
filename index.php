@@ -1,7 +1,8 @@
 <?php
-	require("./functions.php");
-	require_once("./init.php");
+	require(dirname(__FILE__) . "/lib/functions.php");
+	require_once(dirname(__FILE__) . "/lib/init.php");
 
+	// Store the current page
 	session_start();
 	$_SESSION['current-page'] = 'index';
 ?>
@@ -31,7 +32,7 @@
 		?>
 
 		<h2 >Literally, this is Raymond Shi's Personal Blog</h2>
-		<p style="font-size:15px">Focus on Data Mining, Machine Learning, Web/Mobile application. --- Let's go Geek.</p>
+		<p style="font-size:15px; color:#666">Focus on Data Mining, Machine Learning, Web/Mobile application. --- Let's go Geek.</p>
 		
 		<div class='caption col-lg-8 col-md-8'>
 		<!-- blogs -->

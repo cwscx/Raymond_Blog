@@ -4,7 +4,7 @@
 	 */
 	function navbar_template()
 	{
-		require_once('./template/navbar.tmpl.php');
+		require_once(dirname(__FILE__) . '/template/navbar.tmpl.php');
 	}
 
 	/*
@@ -12,12 +12,17 @@
 	 */
 	function title($title)
 	{
-		printf("<h3 style='font-family: sans-serif'>
-			<a style='color:black' href='%s'>%s</a>
-		</h3>
-		<hr/>",
-		htmlspecialchars($title),
-		htmlspecialchars($title));
+		if(is_string($title))
+		{
+			printf("<h3 style='font-family: sans-serif'>
+					<a style='color:black' href='%s'>%s</a>
+				</h3>
+				<hr/>",
+				htmlspecialchars($title),
+				htmlspecialchars($title));
+		}
+		else
+			throw new Exception('Title is required to be a String.');
 	}
 
 	/*
@@ -25,13 +30,21 @@
 	 * Category, tags and time included
 	 */
 	function info($category, $tags, $time)
-	{
-		$tags_array = array();
+	{	
 		// Check the tags as an array
+		$tags_array = array();
 		if(!is_array($tags))
 			$tags_array = explode(',', $tags); 	// Transfer the tags from string to array
-		else
+		else if(is_string($tags))
 			$tags_array = $tags;
+		else
+			throw new Exception('Tags needs to be an array or an array in string form.');
+
+		// String format checking
+		if(!is_string($category))
+			throw new Exception('Category needs to be a String.');
+		if(!is_string($time))
+			throw new Exception('Time needs to be a string.');
 
 		// Category
 		printf("<p style='color:#999'>
@@ -60,7 +73,29 @@
 	 */
 	function intro($introduction)
 	{
-		printf("<p>%s</p>", htmlspecialchars($introduction));
+		if(is_string($introduction))
+			printf("<p>%s</p>", htmlspecialchars($introduction));
+		else
+			throw new Exception("String is required for introduction.");
+	}
+
+	/*
+	 * Print the paragraphs
+	 */
+	function paragraphs($paragraphs)
+	{
+		$paragraphs_array = array();
+		if(is_string($paragraphs))
+			$paragraphs_array = explode('\n', $paragraphs);
+		else if(is_array($paragraphs))
+			$paragraphs_array = $paragraphs;
+		else
+			throw new Exception("Paragraphs is required to be an array or an array in string form.");
+
+		foreach($paragraphs as $para)
+		{
+			printf("<p>%s</p>", htmlspecialchars($para));
+		}
 	}
 
 	/*

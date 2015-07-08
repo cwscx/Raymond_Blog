@@ -1,5 +1,7 @@
 <?php
-	require_once("functions.php");
+	require_once(dirname(__FILE__) . "/lib/functions.php");
+
+	// Store the current page
 	session_start();
 	$_SESSION['current-page'] = 'contact';
 ?>

@@ -47,7 +47,9 @@
 
 	if($ok)
 	{
-		//$db = mysql_con('blog_contact');
+		$advice = sql_connection('advice');
+
+		mysqli_close($advice);
 	}
 ?>
 
@@ -57,8 +59,9 @@
 		?>
 
 		<h1>Contact Me</h1>
-		<p>Tell me anything that intrigues you! We can talk about fascinating ideas, stories, places, etc. together! </p>
+		<p style="font-size:15px; color:#666">Tell me anything that intrigues you! We can talk about fascinating ideas, stories, places, etc. together! </p>
 
+		<!-- error message -->
 		<div class="col-lg-8 col-md-8 well <?php
 			// When the form is submitted and everything is ok or the form is unsubmitted
 			if((isset($_POST['submit']) && $ok) || !isset($_POST['submit']))

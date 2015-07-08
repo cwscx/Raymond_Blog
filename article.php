@@ -6,7 +6,7 @@
 	$db = sql_connection('blog');
 
 	// Title is unique, and the result is proved to be not null.
-	$result = check_exist($db, 'title', $para_name);
+	$result = blog_check_exist($db, 'title', $para_name);
 
 	// If nothing is found from db, redirect to 404 page...
 	if(!$result)
@@ -43,6 +43,8 @@
 					info($row['category'], $row['tags'], $row['time']);
 					paragraphs($row['article']);
 				}
+
+				mysqli_close($db);
 			?>
 		</div>
 	</div>

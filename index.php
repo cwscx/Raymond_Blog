@@ -14,14 +14,6 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 </head>
 <body>
-<?php
-	// When an article's title is clicked, we'll send a get to the index.php.
-	// We'll handle this condition here.
-	if(sizeof($_GET) > 0)
-	{
-		echo "xxx";
-	}
-?>
 	<!-- Bootstrap's js requires jquery. So jquery needs to included first -->
 	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
@@ -37,7 +29,7 @@
 		<!-- blogs -->
 		<?php
 			$db = sql_connection('blog');       // database
-			$result = check_exist($db, '', '');	// Get all blogs
+			$result = blog_check_exist($db, '', '');	// Get all blogs
 
 			if($result && sizeof($result) > 0)
 			{
@@ -49,6 +41,8 @@
 					intro($row['intro']);
 				}
 			}
+
+			mysqli_close($db);
 		?>
 		</div>
 	</div>

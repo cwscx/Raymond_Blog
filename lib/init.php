@@ -54,5 +54,5 @@
 	)";
 	$result = mysqli_query($advice, $sql);
 
-
+	mysqli_close($advice);
 ?>

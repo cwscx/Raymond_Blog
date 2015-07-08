@@ -139,7 +139,7 @@
 	 * If exist, return the result. Else return NULL.
 	 * ATTENTION: the return result might be an array, since the sql searching is not exact searching.
 	 */
-	function check_exist($db, $para, $expect_val)
+	function blog_check_exist($db, $para, $expect_val)
 	{
 		if(is_string($para))
 		{
@@ -176,7 +176,7 @@
 	 */
 	function insert_article($db, $title, $category, $tags, $intro, $article)
 	{
-		if(!check_exist($db, 'title', $title))
+		if(!blog_check_exist($db, 'title', $title))
 		{
 			// Check whether tags is an array and its length.
 			if(!is_array($tags))

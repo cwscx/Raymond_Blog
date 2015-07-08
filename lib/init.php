@@ -29,7 +29,7 @@
 			"Hello Blog! Here's the main article of my first blog. There won't be too much material in my first 
 			blog, cuz this is simply for testing my blog works correctly with php and MySQL. There will be more
 			blogs. I promise. You think there will be more material and paragraphs describing this website? Haha!
-			\n Sorry I need to work on the next milestone of this website! See you soon!");
+			\\n Sorry I need to work on the next milestone of this website! See you soon!");
 	}catch(Exception $e){
 		// Do nothing here
 		// echo $e -> getMessage();

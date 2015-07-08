@@ -90,7 +90,7 @@
 	}
 
 	/*
-	 * Print the paragraphs
+	 * Print the paragraphs.
 	 */
 	function paragraphs($paragraphs)
 	{
@@ -102,7 +102,7 @@
 		else
 			throw new Exception("Paragraphs is required to be an array or an array in string form.");
 
-		foreach($paragraphs as $para)
+		foreach($paragraphs_array as $para)
 		{
 			printf("<p>%s</p>", htmlspecialchars($para));
 		}
@@ -157,9 +157,8 @@
 			}
 
 			$result = mysqli_query($db, $sql);
-			$row = mysqli_fetch_assoc($result); 	// Transfer result to an array and check its size
 
-			if(!$result || sizeof($row) === 0)
+			if(!$result)
 				return NULL;
 
 			return $result;
@@ -170,6 +169,9 @@
 
 	/*
 	 * Create a new article. If the title is repeated, the article won't be added.
+	 * ATTENTION: For Article, if you want to have separate paragraphs, add '\\n'
+	 * at the place where you want a second paragraph.
+	 * For intro,  it in just one paragraph.
 	 */
 	function insert_article($db, $title, $category, $tags, $intro, $article)
 	{

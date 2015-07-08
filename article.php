@@ -3,6 +3,9 @@
 
 	session_start();
 	$_SESSION['current-page'] = NULL;
+
+	// Get the paragraph's name
+	$para_name = $_GET['title'];
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +25,23 @@
 			header_template();
 		?>
 
-		
+		<div class='caption col-lg-8 col-md-8'>
+			<?php
+				$db = sql_connection('blog');
+				$result = check_exist($db, 'title', $para_name);
+				$row = mysqli_fetch_assoc($result);
+
+				if($result && sizeof($row) > 0)
+				{
+					foreach($result as $row)
+					{
+						title($row['title']);
+						info($row['category'], $row['tags'], $row['time']);
+						paragraphs($row['article']);
+					}
+				}
+			?>
+		</div>
 	</div>
 </body>
 </html>

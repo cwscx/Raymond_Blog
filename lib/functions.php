@@ -8,16 +8,26 @@
 	}
 
 	/*
+	 * Get header template for the page.
+	 */
+	function header_template()
+	{
+		require_once(dirname(__FILE__) . '/template/header.tmpl.php');
+	}
+
+	/*
 	 * Print the title for an article
 	 */
 	function title($title)
 	{
 		if(is_string($title))
 		{
-			printf("<h3 style='font-family: sans-serif'>
-					<a style='color:black' href='%s'>%s</a>
+			printf("
+				<h3 style='font-family: sans-serif'>
+					<a style='color:black' href='article.php?title=%s'>%s</a>
 				</h3>
-				<hr/>",
+				<hr/>
+				",
 				htmlspecialchars($title),
 				htmlspecialchars($title));
 		}

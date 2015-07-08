@@ -14,15 +14,15 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li class="nav <?php 
 				if($_SESSION['current-page'] === 'index')
-					echo active;
+					echo 'active';
 			?>"><a href=".">Home</a></li>
 			<li class="nav <?php
 				if($_SESSION['current-page'] === 'about')
-					echo active;
+					echo 'active';
 			?>"><a href="about.php">About</a></li>
 			<li class="nav <?php 
 				if($_SESSION['current-page'] === 'contact')
-					echo active;
+					echo 'active';
 			?>"><a href="contact.php">Contact</a></li>
 		</ul>
 	</div>	

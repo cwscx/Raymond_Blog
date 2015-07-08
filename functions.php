@@ -1,4 +1,9 @@
 <?php
+	function navbar_template()
+	{
+		require_once('./template/navbar.tmpl.php');
+	}
+
 	/*
 	 * Build up sql connection of given database. 
 	 * If the given name is not created, create one new database.

@@ -3,9 +3,7 @@
 	require_once("./init.php");
 
 	session_start();
-	$_SESSION['index'] = 1;
-	$_SESSION['about'] = 0;
-	$_SESSION['contact'] = 0;
+	$_SESSION['current-page'] = 'index';
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,33 +12,23 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 </head>
 <body>
+<?php
+	// When an article's title is clicked, we'll send a get to the index.php.
+	// We'll handle this condition here.
+	if(sizeof($_GET) > 0)
+	{
+		echo "xxx";
+	}
+?>
 	<!-- Bootstrap's js requires jquery. So jquery needs to included first -->
 	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	
 
 	<div class="container">
-		<!-- navbar -->
-		<div id="menu" class="navbar navbar-default navbar-fixed-top">
-			<div class="navbar-header">
-				<button type="button" class="btn-info navbar-toggle" 
-						data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="glyphicon glyphicon-th-list"></span>
-				</button>
-				<div class="navbar-brand">
-					<a href="." style="text-decoration:none"><h3 style="color:#EEE">Raymond's Blog</h3></a>
-				</div>
-			</div>
-
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="nav active"><a href="index.php">Home</a></li>
-					<li class="nav"><a href="about.php">About</a></li>
-					<li class="nav"><a href="contact.php">Contact</a></li>
-				</ul>
-			</div>
-		</div>
-		<!-- navbar ended -->
+		<?php
+			navbar_template();
+		?>
 
 		<h2 >Literally, this is Raymond Shi's Personal Blog</h2>
 		<p style="font-size:15px">Focus on Data Mining, Machine Learning, Web/Mobile application. --- Let's go Geek.</p>

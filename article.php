@@ -40,6 +40,10 @@
 						paragraphs($row['article']);
 					}
 				}
+				else
+				{
+					
+				}
 			?>
 		</div>
 	</div>

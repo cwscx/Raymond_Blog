@@ -34,18 +34,9 @@
 
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="nav <?php 
-						if($_SESSION['index'] === 1)
-							echo active;
-					?>"><a href="index.php">Home</a></li>
-					<li class="nav <?php 
-						if($_SESSION['about'] === 1)
-							echo active;
-					?>"><a href="about.php">About</a></li>
-					<li class="nav <?php 
-						if($_SESSION['contact'] === 1)
-							echo active;
-					?>"><a href="contact.php">Contact</a></li>
+					<li class="nav active"><a href="index.php">Home</a></li>
+					<li class="nav"><a href="about.php">About</a></li>
+					<li class="nav"><a href="contact.php">Contact</a></li>
 				</ul>
 			</div>
 		</div>
@@ -66,26 +57,38 @@
 					// Transfer the tags from string to array
 					$tags = explode(',', $row['tags']);
 
-					$blogs = "<div class='caption col-lg-8 col-md-8'>
-								<h3 style='font-family: sans-serif'>%s</h3>
+					// Try to concat blogs together
+					// Head, subline, category 
+					$blogs = "<div class='col-lg-8 col-md-8'>
+								<h3 style='font-family: sans-serif'>
+									<a style='color:black' href='index.php?val=%s'>%s</a>
+								</h3>
 							<hr/>
 							<p style='color:#aaa'>
-								Category:&nbsp;
-								<a>%s</a>&nbsp;
-								|&nbsp;Tags:&nbsp;";
+								Category:&nbsp; 
+								<a href='category.php?val=%s'>%s</a>&nbsp;&nbsp;";
+
+					// Tags
+					$blogs = $blogs . "|&nbsp;&nbsp;Tags:&nbsp;&nbsp;";
 					foreach($tags as $value)
 					{
-						$blogs = $blogs . sprintf("<a href='tag.php?val=%s'>%s</a>&nbsp;",
+						$blogs = $blogs . sprintf("<a href='tag.php?val=%s'>%s</a>&nbsp;&nbsp;",
 													htmlspecialchars($value),
 													htmlspecialchars($value));
 					}
-					$blogs = $blogs . "|&nbsp;Date:&nbsp;";
 
-					$blogs = $blogs .
-					"		</p>
-						</div>";
-						printf($blogs,
+					// Date
+					$blogs = $blogs . "|&nbsp;&nbsp;Date:&nbsp;&nbsp;";
+					$blogs = $blogs . sprintf("%s", htmlspecialchars($row['time'])) . '</p>';
+
+					// End
+					$blogs = $blogs . "</div>";
+
+					// Print it out
+					printf($blogs,
 						htmlspecialchars($row['title']),
+						htmlspecialchars($row['title']),
+						htmlspecialchars($row['category']),
 						htmlspecialchars($row['category']));
 				}
 			}

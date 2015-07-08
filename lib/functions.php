@@ -104,7 +104,7 @@
 
 		foreach($paragraphs_array as $para)
 		{
-			printf("<p>%s</p>", htmlspecialchars($para));
+			printf('<p>%s</p>', $para);    //htmlspecialchars deleted for tag uses
 		}
 	}
 
@@ -157,8 +157,9 @@
 			}
 
 			$result = mysqli_query($db, $sql);
+			$row = mysqli_fetch_assoc($result);
 
-			if(!$result)
+			if(!$result || sizeof($row) === 0)
 				return NULL;
 
 			return $result;

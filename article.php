@@ -28,10 +28,11 @@
 		<div class='caption col-lg-8 col-md-8'>
 			<?php
 				$db = sql_connection('blog');
-				$result = check_exist($db, 'title', $para_name);
-				$row = mysqli_fetch_assoc($result);
 
-				if($result && sizeof($row) > 0)
+				// Title is unique, and the result is proved to be not null.
+				$result = check_exist($db, 'title', $para_name);
+
+				if($result)
 				{
 					foreach($result as $row)
 					{
@@ -42,7 +43,7 @@
 				}
 				else
 				{
-					
+
 				}
 			?>
 		</div>

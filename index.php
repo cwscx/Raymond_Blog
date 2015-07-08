@@ -18,7 +18,9 @@
 	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	
+
 	<div class="container">
+		<!-- navbar -->
 		<div id="menu" class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-header">
 				<button type="button" class="btn-info navbar-toggle" 
@@ -47,9 +49,47 @@
 				</ul>
 			</div>
 		</div>
+		<!-- navbar ended -->
 
+		<h2 >Literally, this is Raymond Shi's Personal Blog</h2>
+		<p><!-- Fill this later --></p>
+		
+		<!-- blogs -->
+		<?php
+			$db = sql_connection('blog');       // database
+			$result = check_exist($db, '', '');	// Get all blogs
 
-		<h1>I'm still working on it...</h1>
+			if($result && sizeof($result) > 0)
+			{
+				foreach($result as $row)
+				{
+					// Transfer the tags from string to array
+					$tags = explode(',', $row['tags']);
+
+					$blogs = "<div class='caption col-lg-8 col-md-8'>
+								<h3 style='font-family: sans-serif'>%s</h3>
+							<hr/>
+							<p style='color:#aaa'>
+								Category:&nbsp;
+								<a>%s</a>&nbsp;
+								|&nbsp;Tags:&nbsp;";
+					foreach($tags as $value)
+					{
+						$blogs = $blogs . sprintf("<a href='tag.php?val=%s'>%s</a>&nbsp;",
+													htmlspecialchars($value),
+													htmlspecialchars($value));
+					}
+					$blogs = $blogs . "|&nbsp;Date:&nbsp;";
+
+					$blogs = $blogs .
+					"		</p>
+						</div>";
+						printf($blogs,
+						htmlspecialchars($row['title']),
+						htmlspecialchars($row['category']));
+				}
+			}
+		?>
 	</div>
 </body>
 </html>

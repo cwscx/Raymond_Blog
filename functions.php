@@ -26,43 +26,66 @@
 	}
 
 	/*
-	 * Check whether the passed in key-value pair exists
+	 * Check whether the passed in key-value pair exists. 
+	 * If exist, return the result. Else return NULL.
+	 * ATTENTION: the return result might be an array, since the sql searching is not exact searching.
 	 */
 	function check_exist($db, $para, $expect_val)
 	{
 		if(is_string($para))
 		{
-			$ok = true;
-			$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%s'", 
-							mysqli_real_escape_string($db, $para),
-							mysqli_real_escape_string($db, $expect_val));
+			$sql = NULL;
+
+			// Select everything from the articles
+			if($para === '')
+				$sql = 'SELECT * FROM articles';
+			else
+			{
+				// Use inclusive searching
+				$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%'", 
+								mysqli_real_escape_string($db, $para),
+								mysqli_real_escape_string($db, $expect_val));
+			}
 
 			$result = mysqli_query($db, $sql);
-			$row = mysqli_fetch_assoc($result);  // Transfer select outcome to an array
+			$row = mysqli_fetch_assoc($result); 	// Transfer result to an array and check its size
 
-			if(!$row || sizeof($row) === 0)
-				$ok = false;
+			if(!$result || sizeof($row) === 0)
+				return NULL;
 
-			return $ok;
+			return $result;
 		}
 		else
 			throw new Exception("String parameter required.");
 	}
 
 	/*
-	 * Create a new User. If the username or the email is repeated, the user will not be added.
+	 * Create a new article. If the title is repeated, the article won't be added.
 	 */
-	function insert_article($db, $title, $subtitle, $article)
+	function insert_article($db, $title, $category, $tags, $article)
 	{
 		if(!check_exist($db, 'title', $title))
 		{
+			// Check whether tags is an array and its length.
+			if(!is_array($tags))
+				throw new Exception('Array required for tags.');
+			if(sizeof($tags) > 4)
+				throw new Exception('Tag Discription of this article is too long.');
+
+			$string_array = implode(',', $tags);
+
 			// printf's parameters' %s must be surrounded with ''
-			$sql = sprintf("INSERT INTO blog.articles (title, subtitle, article) VALUES ('%s', '%s', '%s')",
+			$sql = sprintf("INSERT INTO blog.articles (title, category, tags, article, time, clicks) 
+							VALUES ('%s', '%s', '%s', '%s', now(), %d)",
 							mysqli_real_escape_string($db, $title),
-							mysqli_real_escape_string($db, $subtitle),
-							mysqli_real_escape_string($db, $article));
+							mysqli_real_escape_string($db, $category),
+							mysqli_real_escape_string($db, $string_array),
+							mysqli_real_escape_string($db, $article),
+							0);
 			$result = mysqli_query($db, $sql);
 		}
+		else
+			throw new Exception('The title alreasy exists.');
 	}
 
 ?>

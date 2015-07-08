@@ -1146,8 +1146,8 @@ img {
   border-radius: 50%;
 }
 hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 2px;
+  margin-bottom: 5px;
   border: 0;
   border-top: 1px solid #eee;
 }
@@ -1283,7 +1283,6 @@ h3,
 h4,
 .h4 {
   font-size: 18px;
-  font-family: "Apple Chancery", "Lucida Console", "Times", "cursive";
 }
 h5,
 .h5 {

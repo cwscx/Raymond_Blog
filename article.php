@@ -1,11 +1,19 @@
 <?php
 	require(dirname(__FILE__) . "/lib/functions.php");
 
-	session_start();
-	$_SESSION['current-page'] = NULL;
-
 	// Get the paragraph's name
 	$para_name = $_GET['title'];
+	$db = sql_connection('blog');
+
+	// Title is unique, and the result is proved to be not null.
+	$result = check_exist($db, 'title', $para_name);
+
+	// If nothing is found from db, redirect to 404 page...
+	if(!$result)
+		header('Location: ./404.php');
+	
+	session_start();
+	$_SESSION['current-page'] = NULL;
 ?>
 
 <!DOCTYPE html>
@@ -27,23 +35,13 @@
 
 		<div class='caption col-lg-8 col-md-8'>
 			<?php
-				$db = sql_connection('blog');
-
-				// Title is unique, and the result is proved to be not null.
-				$result = check_exist($db, 'title', $para_name);
-
-				if($result)
+				// This for loop will be executed only once...
+				// Since the title is unique.
+				foreach($result as $row)
 				{
-					foreach($result as $row)
-					{
-						title($row['title']);
-						info($row['category'], $row['tags'], $row['time']);
-						paragraphs($row['article']);
-					}
-				}
-				else
-				{
-
+					title($row['title']);
+					info($row['category'], $row['tags'], $row['time']);
+					paragraphs($row['article']);
 				}
 			?>
 		</div>

@@ -39,6 +39,21 @@
 			// Select everything from the articles
 			if($para === '')
 				$sql = 'SELECT * FROM articles';
+			else if($para === 'everything')
+			{
+				// Search for keyword in a title/tag/category/intro/article of a blog
+				$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%'", 
+								mysqli_real_escape_string($db, 'title'),
+								mysqli_real_escape_string($db, $_GET['val']),
+								mysqli_real_escape_string($db, 'category'),
+								mysqli_real_escape_string($db, $_GET['val']),
+								mysqli_real_escape_string($db, 'tags'),
+								mysqli_real_escape_string($db, $_GET['val']),
+								mysqli_real_escape_string($db, 'intro'),
+								mysqli_real_escape_string($db, $_GET['val']),
+								mysqli_real_escape_string($db, 'article'),
+								mysqli_real_escape_string($db, $_GET['val']));
+			}
 			else
 			{
 				// Use inclusive searching
@@ -99,6 +114,17 @@
 		}
 		else
 			throw new Exception('The title alreasy exists.');
+	}
+
+	/*
+	 * Auto increase the clicks of a blog by 1
+	 */
+	function update_clicks($db, $title)
+	{
+		$sql = sprintf("UPDATE blog.articles SET clicks = (clicks + 1) WHERE title = '%s'", $title);
+
+		$result = mysqli_query($db, $sql);
+		return $result;
 	}
 
 	/*

@@ -2,18 +2,20 @@
 	/*
 	 * Print the title for an article
 	 */
-	function title($title)
+	function title($title, $clicks)
 	{
 		if(is_string($title))
 		{
 			printf("
 				<h3 style='font-family: sans-serif'>
 					<a style='color:black' href='article.php?title=%s'>%s</a>
+					<span class='badge'>%s℉</span>
 				</h3>
 				<hr/>
 				",
 				htmlspecialchars($title),
-				htmlspecialchars($title));
+				htmlspecialchars($title),
+				htmlspecialchars($clicks));
 		}
 		else
 			throw new Exception('Title is required to be a String.');

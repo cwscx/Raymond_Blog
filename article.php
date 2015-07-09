@@ -41,9 +41,11 @@
 				// Since the title is unique.
 				foreach($result as $row)
 				{
-					title($row['title']);
+					title($row['title'], $row['clicks']);
 					info($row['category'], $row['tags'], $row['time']);
 					paragraphs($row['article']);
+
+					update_clicks($db, $row['title']);
 				}
 
 				mysqli_close($db);

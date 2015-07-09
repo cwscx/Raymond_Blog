@@ -19,7 +19,7 @@
 			<li class="nav <?php
 				if($_SESSION['current-page'] === 'comments')
 					echo 'active';
-			?>"><a href="../private/comments_view.php">About</a></li>
+			?>"><a href="../private/comments_view.php">Comments</a></li>
 		</ul>
 	</div>	
 </div>

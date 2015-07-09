@@ -23,6 +23,7 @@
 	$category='';
 	$comment='';
 	$ok=true;
+	$insert_failure = false;
 
 	if(isset($_POST['submit']))
 	{
@@ -50,6 +51,9 @@
 		{
 			$db = sql_connection('blog');
 			$result = insert_advice($db, $name, $email, $category, $comment);
+			if(!$result)
+				$insert_failure = true;
+
 			mysqli_close($db);
 		}
 	}
@@ -66,7 +70,7 @@
 		<!-- error message -->
 		<div class="col-lg-8 col-md-8 well <?php
 			// When the form is submitted and everything is ok or the form is unsubmitted
-			if((isset($_POST['submit']) && $ok) || !isset($_POST['submit']))
+			if((isset($_POST['submit']) && $ok) || !isset($_POST['submit']) || $insert_failure === true)
 				echo 'hidden';
 		?>">
 			<p>Oooooops...You don't wanna message me T^T?</p>
@@ -125,7 +129,10 @@
 				</div>
 				<div class="form-group">
 					<label for="comment">Comments</label>
-					<textarea name="comment" rows="5" class="form-control" placeholder="e.g. I love u~"></textarea>
+					<!-- Store user's entered text value -->
+					<textarea name="comment" rows="5" class="form-control" draggable="false" placeholder="e.g. I love u~"><?php
+							echo htmlspecialchars($comment);
+					?></textarea>
 				</div>
 				<input class="btn btn-primary" type="submit" name="submit" value="Sumbit" />
 			</form>

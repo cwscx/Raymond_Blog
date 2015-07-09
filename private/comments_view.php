@@ -4,7 +4,7 @@
 
 	// Store the current page
 	session_start();
-	$_SESSION['current-page'] = NULL;
+	$_SESSION['current-page'] = 'comments';
 ?>
 
 <!DOCTYPE html>

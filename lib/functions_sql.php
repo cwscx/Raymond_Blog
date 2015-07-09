@@ -64,18 +64,26 @@
 	 * ATTENTION: For Article, if you want to have separate paragraphs, add '\\n'
 	 * at the place where you want a second paragraph.
 	 * For intro,  it in just one paragraph.
+	 * For tags, either array or array in string form will be ok.
 	 */
 	function insert_article($db, $title, $category, $tags, $intro, $article)
 	{
 		if(!blog_check_exist($db, 'title', $title))
 		{
-			// Check whether tags is an array and its length.
-			if(!is_array($tags))
-				throw new Exception('Array required for tags.');
-			if(sizeof($tags) > 4)
-				throw new Exception('Tag Discription of this article is too long.');
+			$string_array = '';
 
-			$string_array = implode(',', $tags);
+			// Check whether tags is an array and its length.
+			if(is_array($tags))
+			{
+				if(sizeof($tags) > 4)
+					throw new Exception('Tag Discription of this article is too long.');
+				
+				$string_array = implode(',', $tags);
+			}
+			else if(is_string($tags))
+				$string_array = $tags;
+			else
+				throw new Exception('Tag needs to be either an array or an array in string form.');
 
 			// printf's parameters' %s must be surrounded with ''
 			$sql = sprintf("INSERT INTO blog.articles (title, category, tags, intro, article, time, clicks) 

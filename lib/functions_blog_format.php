@@ -28,7 +28,7 @@
 		// Check the tags as an array
 		$tags_array = array();
 		if(!is_array($tags))
-			$tags_array = explode(',', $tags); 	// Transfer the tags from string to array
+			$tags_array = explode(",", $tags); 	// Transfer the tags from string to array
 		else if(is_string($tags))
 			$tags_array = $tags;
 		else

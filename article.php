@@ -1,6 +1,6 @@
 <?php
 	require_once(dirname(__FILE__) . "/lib/functions_template.php");
-	require_once(dirname(__FILE__) . "/lib/functions_format.php");
+	require_once(dirname(__FILE__) . "/lib/functions_blog_format.php");
 	require_once(dirname(__FILE__) . "/lib/functions_sql.php");
 
 	// Get the paragraph's name

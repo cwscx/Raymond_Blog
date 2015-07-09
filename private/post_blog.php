@@ -1,6 +1,5 @@
 <?php
 	require_once("../lib/functions_template.php");
-	require_once("../lib/functions_format.php");
 	require_once("../lib/functions_sql.php");
 
 	// Store the current page

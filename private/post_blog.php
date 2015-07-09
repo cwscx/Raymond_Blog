@@ -62,10 +62,15 @@
 				if($ok)
 				{
 					$db = sql_connection("blog");
-					$result = insert_article($db, $title, $category, $tags, $intro, $article);
-					if(!$result)
-						echo "Insert Failure";
-
+					try
+					{
+						$result = insert_article($db, $title, $category, $tags, $intro, $article);
+					}
+					catch(Exception $e)
+					{
+						echo $e -> getMessage();
+					}
+					
 					mysqli_close($db);
 				}
 			}
@@ -93,7 +98,9 @@
 						   ?>" >
 				</div>
 				<div class="form-group">
-					<label for="tags">Tags<i style="color:#666">&nbsp;(Attention: If there are multiple tags, tags should be separated by ',')</i></label>
+					<label for="tags">Tags
+						<i style="color:#666">&nbsp;(Attention: If there are multiple tags, tags should be separated by ',')</i>
+					</label>
 					
 					<input type="text" name="tags" class="form-control" 
 						   placeholder="Data-mining, python, algorithm" value="<?php 
@@ -107,7 +114,9 @@
 					?></textarea>
 				</div>
 				<div class="form-group">
-					<label for="article">Article<i style="color:#666">&nbsp;(Attention: In order to have multiple paragraphs, separate each paragraphs by '\n')</i></label>
+					<label for="article">Article
+						<i style="color:#666">&nbsp;(Attention: In order to have multiple paragraphs, separate each paragraphs by '\n'.)</i>
+					</label>
 					<textarea name="article" rows="10" class="form-control" placeholder="e.g. Paragraph1 \n Paragraph2 \n Paragraph3"><?php
 						echo $article;
 					?></textarea>

@@ -29,6 +29,8 @@
 	 * Check whether the passed in key-value pair exists. 
 	 * If exist, return the result. Else return NULL.
 	 * ATTENTION: the return result might be an array, since the sql searching is not exact searching.
+	 * When para is '', search without limitation.
+	 * When para is 'everything', search by finding anything matches
 	 */
 	function blog_check_exist($db, $para, $expect_val)
 	{
@@ -63,12 +65,96 @@
 			}
 
 			$result = mysqli_query($db, $sql);
-			$row = mysqli_fetch_assoc($result);
 
-			if(!$result || sizeof($row) === 0)
+			if(!$result || mysqli_num_rows($result) === 0)
 				return NULL;
 
 			return $result;
+		}
+		else
+			throw new Exception("String parameter required.");
+	}
+
+
+	/*
+	 * Check exactly about the title without any fuzzy search.
+	 * Otherwise title with keyword inclusive will also be displayed
+	 */
+	function blog_get_title($db, $title)
+	{
+		if(is_string($title))
+		{
+			$sql = sprintf("SELECT * FROM articles WHERE title LIKE '%s'", 
+								mysqli_real_escape_string($db, $title));
+
+			$result = mysqli_query($db, $sql);
+
+			if(!$result || mysqli_num_rows($result) === 0)
+				return NULL;
+
+			return $result;
+		}
+		else
+			throw new Exception("String parameter required.");
+	}
+
+	/*
+	 * Check whether the passed in key-value pair exists. 
+	 * If exist, return the result. Else return NULL.
+	 * ATTENTION: the return result might be an array, since the sql searching is not exact searching.
+	 * When para is '', search without limitation.
+	 * When para is 'everything', search by finding anything matches
+	 */
+	function blog_check_limits($db, $para, $expect_val, $initial, $offset)
+	{
+		if(is_string($para))
+		{
+			if(is_numeric($initial) && is_numeric($offset))
+			{
+				if($initial >= 0 && $offset >= -1)
+				{
+					$sql = NULL;
+
+					// Select everything from the articles
+					if($para === '')
+						$sql = sprintf('SELECT * FROM articles LIMIT %d, %d', $initial, $offset);
+					else if($para === 'everything')
+					{
+						// Search for keyword in a title/tag/category/intro/article of a blog
+						$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' LIMIT %d, %d", 
+										mysqli_real_escape_string($db, 'title'),
+										mysqli_real_escape_string($db, $_GET['val']),
+										mysqli_real_escape_string($db, 'category'),
+										mysqli_real_escape_string($db, $_GET['val']),
+										mysqli_real_escape_string($db, 'tags'),
+										mysqli_real_escape_string($db, $_GET['val']),
+										mysqli_real_escape_string($db, 'intro'),
+										mysqli_real_escape_string($db, $_GET['val']),
+										mysqli_real_escape_string($db, 'article'),
+										mysqli_real_escape_string($db, $_GET['val']),
+										$initial, $offset);
+					}
+					else
+					{
+						// Use inclusive searching
+						$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%' LIMIT %d, %d", 
+										mysqli_real_escape_string($db, $para),
+										mysqli_real_escape_string($db, $expect_val),
+										$initial, $offset);
+					}
+				
+					$result = mysqli_query($db, $sql);
+
+					if(!$result || mysqli_num_rows($result) === 0)
+						return NULL;
+				
+					return $result;
+				}
+				else
+					throw new Exception("Initial is required to be not negative, and offset is required to be larger or equal to minus one. ");
+			}
+			else
+				throw new Exception("Initial and Offset are required to be numbers.");
 		}
 		else
 			throw new Exception("String parameter required.");

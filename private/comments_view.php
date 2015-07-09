@@ -1,5 +1,7 @@
 <?php
-	require(dirname(__FILE__) . "/lib/functions.php");
+	require_once("../lib/functions_template.php");
+	require_once("../lib/functions_format.php");
+	require_once("../lib/functions_sql.php");
 
 	// Store the current page
 	session_start();
@@ -10,12 +12,17 @@
 <html>
 <head>
 	<title>Administrator</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 </head>
 <body>
 	<!-- Bootstrap's js requires jquery. So jquery needs to included first -->
-	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	
+	<script type="text/javascript" src="../js/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
+
+	<div class="container">
+		<?php
+			admin_template();
+		?>
+	</div>
 </body>
 </html>

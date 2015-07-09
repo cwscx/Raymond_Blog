@@ -1,5 +1,5 @@
 <?php
-	require_once(dirname(__FILE__) . '/lib/functions.php');	
+	require_once(dirname(__FILE__) . "/lib/functions_template.php");
 
 	session_start();
 	$_SESSION['current-page'] = 'about';

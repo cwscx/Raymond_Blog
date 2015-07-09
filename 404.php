@@ -1,5 +1,5 @@
 <?php
-	require(dirname(__FILE__) . "/lib/functions.php");
+	require_once(dirname(__FILE__) . "/lib/functions_template.php");
 ?>
 
 <!DOCTYPE html>

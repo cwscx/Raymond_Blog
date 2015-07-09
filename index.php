@@ -1,5 +1,7 @@
 <?php
-	require(dirname(__FILE__) . "/lib/functions.php");
+	require_once(dirname(__FILE__) . "/lib/functions_template.php");
+	require_once(dirname(__FILE__) . "/lib/functions_format.php");
+	require_once(dirname(__FILE__) . "/lib/functions_sql.php");
 	require_once(dirname(__FILE__) . "/lib/init.php");
 
 	// Store the current page

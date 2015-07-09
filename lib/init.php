@@ -1,5 +1,6 @@
 <?php
-	require_once(dirname(__FILE__) . '/functions.php');
+	require_once(dirname(__FILE__) . '/functions_sql.php');
+	
 	$db = sql_connection("blog");		// db to store articles info
 
 	// Create the user Table to store usrs
@@ -20,6 +21,7 @@
 	$tags = array();
 	$tags = ['test', 'blog'];
 
+	/* Insert the test article */
 	try{
 		insert_article($db, 'First essay', 'test', $tags, 
 			'Hello Blog! Here\'s the introduction of my first blog. There won\'t be too much material in my first 
@@ -36,6 +38,7 @@
 		// echo $e -> getMessage();
 	}
 
+	// Create another table to store users' comments
 	$sql = "CREATE TABLE advice
 	(
 		id int(8) NOT NULL AUTO_INCREMENT,

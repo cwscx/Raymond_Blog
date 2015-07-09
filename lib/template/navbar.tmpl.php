@@ -1,3 +1,9 @@
+<?php
+	// Redirection for navbar searching
+	if (isset($_POST['submit']))
+		header(sprintf('Location: .?search=everything&val=%s', $_POST['search']));
+?>
+
 <!-- navbar -->
 <div id="menu" class="navbar navbar-default navbar-fixed-top">
 	<div class="navbar-header">
@@ -25,6 +31,13 @@
 					echo 'active';
 			?>"><a href="contact.php">Contact</a></li>
 		</ul>
+
+		<form class="navbar-form navbar-right" role="search" action="." method="post">
+			<div class="form-group">
+				<input type="text" name="search" class="form-control" placeholder="search">
+			</div>
+			<button type="submit" name="submit" class="btn btn-default">Submit</button>
+		</form>
 	</div>	
 </div>
 <!-- navbar ended -->

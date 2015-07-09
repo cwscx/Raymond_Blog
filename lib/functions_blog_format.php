@@ -43,8 +43,9 @@
 		// Category
 		printf("<p style='color:#999'>
 					Category:&nbsp; 
-					<a href='category.php?val=%s'>%s</a>
+					<a href='.?search=%s&val=%s'>%s</a>
 					&nbsp;&nbsp;|&nbsp;&nbsp;",
+				htmlspecialchars('category'),
 				htmlspecialchars($category),
 				htmlspecialchars($category));
 
@@ -52,7 +53,8 @@
 		print("Tags:&nbsp;&nbsp;");
 		foreach($tags_array as $value)
 		{	
-			printf("<a href='tag.php?val=%s'>%s</a>&nbsp;&nbsp;",
+			printf("<a href='.?search=%s&val=%s'>%s</a>&nbsp;&nbsp;",
+					htmlspecialchars('tags'),
 					htmlspecialchars($value),
 					htmlspecialchars($value));
 		}
@@ -68,7 +70,7 @@
 	function intro($introduction)
 	{
 		if(is_string($introduction))
-			printf("<p>%s</p>", htmlspecialchars($introduction));
+			printf("<p>%s</p><br/>", htmlspecialchars($introduction));
 		else
 			throw new Exception("String is required for introduction.");
 	}

@@ -40,11 +40,11 @@
 
 			// Select everything from the articles
 			if($para === '')
-				$sql = 'SELECT * FROM articles';
+				$sql = 'SELECT * FROM articles ORDER BY id DESC';
 			else if($para === 'everything')
 			{
 				// Search for keyword in a title/tag/category/intro/article of a blog
-				$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%'", 
+				$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' ORDER BY id DESC", 
 								mysqli_real_escape_string($db, 'title'),
 								mysqli_real_escape_string($db, $_GET['val']),
 								mysqli_real_escape_string($db, 'category'),
@@ -59,7 +59,7 @@
 			else
 			{
 				// Use inclusive searching
-				$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%'", 
+				$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%' ORDER BY id DESC", 
 								mysqli_real_escape_string($db, $para),
 								mysqli_real_escape_string($db, $expect_val));
 			}
@@ -117,11 +117,11 @@
 
 					// Select everything from the articles
 					if($para === '')
-						$sql = sprintf('SELECT * FROM articles LIMIT %d, %d', $initial, $offset);
+						$sql = sprintf('SELECT * FROM articles ORDER BY id DESC LIMIT %d, %d', $initial, $offset);
 					else if($para === 'everything')
 					{
 						// Search for keyword in a title/tag/category/intro/article of a blog
-						$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' LIMIT %d, %d", 
+						$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' ORDER BY id DESC LIMIT %d, %d", 
 										mysqli_real_escape_string($db, 'title'),
 										mysqli_real_escape_string($db, $_GET['val']),
 										mysqli_real_escape_string($db, 'category'),
@@ -137,7 +137,7 @@
 					else
 					{
 						// Use inclusive searching
-						$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%' LIMIT %d, %d", 
+						$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%' ORDER BY id DESC LIMIT %d, %d", 
 										mysqli_real_escape_string($db, $para),
 										mysqli_real_escape_string($db, $expect_val),
 										$initial, $offset);

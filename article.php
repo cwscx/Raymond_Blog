@@ -33,6 +33,7 @@
 		<?php
 			navbar_template();
 			header_template();
+			category_template();
 		?>
 
 		<div class='caption col-lg-8 col-md-8'>
@@ -51,6 +52,11 @@
 				mysqli_close($db);
 			?>
 		</div>
+		
+		<!-- sidebar -->
+		<?php
+			sidebar_template();
+		?>
 	</div>
 </body>
 </html>

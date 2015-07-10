@@ -102,26 +102,10 @@
 
 
 		<!-- sidebar -->
-		<div class="caption col-lg-4 col-md-4">
-			<!-- Most popular 10 articles -->
-			<h4 style='font-family: sans-serif'>
-				<a style='color:black;text-decoration:none'>Most popular</a>
-			</h4>
-			<hr/>
-			<?php
-				$db = sql_connection('blog');
-				$result = get_blog_by_clicks($db);
-
-				foreach($result as $row)
-				{
-					printf("<h5><a href='./article?title=%s'>%s</a></h5>",
-						htmlspecialchars($row['title']),
-						htmlspecialchars($row['title']));
-				}
-
-				mysqli_close($db);
-			?>
-		</div>
+		<?php
+			sidebar_template();
+		?>
+		
 	</div>
 </body>
 </html>

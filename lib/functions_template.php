@@ -23,8 +23,19 @@
 		require_once(dirname(__FILE__) . '/template/admin.tmpl.php');
 	}
 
+	/*
+	 * category navbar
+	 */
 	function category_template()
 	{
 		require_once(dirname(__FILE__) . '/template/category.tmpl.php');
+	}
+
+	/*
+	 * sidebar
+	 */
+	function sidebar_template()
+	{
+		require_once(dirname(__FILE__) . '/template/sidebar.tmpl.php');
 	}
 ?>

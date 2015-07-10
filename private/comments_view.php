@@ -1,6 +1,7 @@
 <?php
 	require_once("../lib/functions_template.php");
 	require_once("../lib/functions_sql.php");
+	require_once("../lib/functions_blog_format.php");
 
 	// Store the current page
 	session_start();
@@ -22,6 +23,9 @@
 		<?php
 			admin_template();
 		?>
+		<h2>This is the Administrator page to read comments!</h2>
+		<hr />
+		<br />
 	</div>
 </body>
 </html>

@@ -77,28 +77,6 @@
 
 
 	/*
-	 * Check exactly about the title without any fuzzy search.
-	 * Otherwise title with keyword inclusive will also be displayed
-	 */
-	function get_blog_by_title($db, $title)
-	{
-		if(is_string($title))
-		{
-			$sql = sprintf("SELECT * FROM articles WHERE title LIKE '%s'", 
-								mysqli_real_escape_string($db, $title));
-
-			$result = mysqli_query($db, $sql);
-
-			if(!$result || mysqli_num_rows($result) === 0)
-				return NULL;
-
-			return $result;
-		}
-		else
-			throw new Exception("String parameter required.");
-	}
-
-	/*
 	 * Check whether the passed in key-value pair exists. 
 	 * If exist, return the result. Else return NULL.
 	 * ATTENTION: the return result might be an array, since the sql searching is not exact searching.
@@ -121,7 +99,8 @@
 					else if($para === 'everything')
 					{
 						// Search for keyword in a title/tag/category/intro/article of a blog
-						$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' ORDER BY id DESC LIMIT %d, %d", 
+						$sql = sprintf("SELECT * FROM articles WHERE %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR 
+										%s LIKE '%%%s%%' OR %s LIKE '%%%s%%' OR %s LIKE '%%%s%%' ORDER BY id DESC LIMIT %d, %d", 
 										mysqli_real_escape_string($db, 'title'),
 										mysqli_real_escape_string($db, $_GET['val']),
 										mysqli_real_escape_string($db, 'category'),
@@ -159,6 +138,44 @@
 		else
 			throw new Exception("String parameter required.");
 	}
+
+
+	/*
+	 * Check exactly about the title without any fuzzy search.
+	 * Otherwise title with keyword inclusive will also be displayed
+	 */
+	function get_blog_by_title($db, $title)
+	{
+		if(is_string($title))
+		{
+			$sql = sprintf("SELECT * FROM articles WHERE title LIKE '%s'", 
+								mysqli_real_escape_string($db, $title));
+
+			$result = mysqli_query($db, $sql);
+
+			if(!$result || mysqli_num_rows($result) === 0)
+				return NULL;
+
+			return $result;
+		}
+		else
+			throw new Exception("String parameter required.");
+	}
+
+	/*
+	 * Return the TOP 10 clicked articles
+	 */
+	function get_blog_by_clicks($db)
+	{
+		$sql = "SELECT * FROM articles ORDER BY clicks DESC LIMIT 0, 15";
+		$result = mysqli_query($db, $sql);
+
+		if(!$result || mysqli_num_rows($result) === 0)
+			return NULL;
+
+		return $result;
+	}
+
 
 	/*
 	 * Create a new article. If the title is repeated, the article won't be added.
@@ -224,6 +241,20 @@
 						mysqli_real_escape_string($db, $category),
 						mysqli_real_escape_string($db, $comment));
 		$result = mysqli_query($db, $sql);
+		return $result;
+	}
+
+	/*
+	 * Return all users' advices.
+	 */
+	function get_all_advice($db)
+	{
+		$sql = "SELECT * FROM advice ORDER BY id DESC";
+		$result = myslqi_query($db, $sql);
+
+		if(!$result || mysqli_num_rows($result) === 0)
+			return NULL;
+
 		return $result;
 	}
 ?>

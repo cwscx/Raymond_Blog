@@ -14,7 +14,7 @@
 		intro text(1000) NOT NULL,
 		article text(65535) NOT NULL,
 		time date NOT NULL,
-		clicks int(4) NOT NULL
+		clicks int(8) NOT NULL
 	)";
 	$result = mysqli_query($db, $sql);
 	

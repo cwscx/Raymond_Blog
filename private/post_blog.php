@@ -99,7 +99,7 @@
 				</div>
 				<div class="form-group">
 					<label for="tags">Tags
-						<i style="color:#666">&nbsp;(Attention: If there are multiple tags, tags should be separated by ',')</i>
+						<i style="color:#666">&nbsp;(Attention: If there are multiple tags, tags should be separated by ','. c++ should be written as cpp.)</i>
 					</label>
 					
 					<input type="text" name="tags" class="form-control" 

@@ -163,7 +163,7 @@
 	}
 
 	/*
-	 * Return the TOP 10 clicked articles
+	 * Return the TOP 15 clicked articles
 	 */
 	function get_blog_by_clicks($db)
 	{
@@ -176,6 +176,39 @@
 		return $result;
 	}
 
+	/*
+	 * Return the TOP 8 most frequent tags
+	 */
+	function get_blog_by_tag_freq($db)
+	{
+		$result = blog_check_exist($db, '', '');
+		$freq_array = array();
+
+		// Store all the existing tags in an array
+		foreach($result as $row)
+		{
+			$tags_array = explode(',', $row['tags']);
+			for($i = 0; $i < sizeof($tags_array); $i++)
+			{
+				if(!isset($freq_array[$tags_array[$i]]))
+					$freq_array[$tags_array[$i]] = 1;
+				else
+					$freq_array[$tags_array[$i]]++;
+			}
+		}
+
+		// Sort in descending 
+		arsort($freq_array, SORT_NUMERIC);
+		$keys = array_keys($freq_array);
+
+		// Print the tags' names
+		for($i = 0; $i < ((sizeof($freq_array) <= 8) ? sizeof($freq_array) : 8); $i++)
+		{
+			printf("<h5><a href='.?search=tags&val=%s'>%s</a></h5>",
+				htmlspecialchars($keys[$i]),
+				htmlspecialchars($keys[$i]));
+		}
+	}
 
 	/*
 	 * Create a new article. If the title is repeated, the article won't be added.

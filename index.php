@@ -25,6 +25,7 @@
 		<?php
 			navbar_template();
 			header_template();
+			category_template();
 		?>
 		
 		<!-- blogs -->

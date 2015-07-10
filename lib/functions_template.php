@@ -22,4 +22,9 @@
 	{
 		require_once(dirname(__FILE__) . '/template/admin.tmpl.php');
 	}
+
+	function category_template()
+	{
+		require_once(dirname(__FILE__) . '/template/category.tmpl.php');
+	}
 ?>

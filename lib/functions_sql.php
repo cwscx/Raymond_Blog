@@ -80,7 +80,7 @@
 	 * Check exactly about the title without any fuzzy search.
 	 * Otherwise title with keyword inclusive will also be displayed
 	 */
-	function blog_get_title($db, $title)
+	function get_blog_by_title($db, $title)
 	{
 		if(is_string($title))
 		{

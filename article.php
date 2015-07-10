@@ -8,7 +8,7 @@
 	$db = sql_connection('blog');
 
 	// Title is unique, and the result is proved to be not null.
-	$result = blog_get_title($db, $para_name);
+	$result = get_blog_by_title($db, $para_name);
 
 	// If nothing is found from db, redirect to 404 page...
 	if(!$result)

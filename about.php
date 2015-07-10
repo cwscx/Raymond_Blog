@@ -21,6 +21,16 @@
 		navbar_template();
 		header_template();
 	?>
+
+		<div class="col-lg-8 col-md-8">
+			<h3 style="font-family: sans-serif; color:#2c3e50">About the Blogger</h3>
+			<hr/>
+			<p>UCSD(University of California, San Diego) third year student</p>
+			<p>Major in Computer Science</p>
+			<p><a href="https://github.com/cwscx">@github</a>, <a href="https://www.facebook.com/shengyang.shi.1">@fb</a></p>
+			<p>wechat: cwscx941224</p>
+			<img src="assets/wechatbinary.jpg" width="130px">
+		</div>
 	</div>
 </body>
 </html>

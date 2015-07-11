@@ -29,7 +29,7 @@
 		?>
 		
 		<!-- blogs -->
-		<div class='caption col-lg-8 col-md-8 col-sm-8'>
+		<div class='caption col-lg-8 col-md-8'>
 		<?php
 			$db = sql_connection('blog');       // database
 			$result = NULL;						// s

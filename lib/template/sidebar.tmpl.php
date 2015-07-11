@@ -1,4 +1,4 @@
-<div class="caption col-lg-offset-1 col-lg-3 col-md-4 col-sm-4 hidden-xs">
+<div class="caption col-lg-offset-1 col-lg-3 col-md-4 hidden-sm hidden-xs">
 	<!-- Most popular 15 articles -->
 	<h4>Most popular Blogs</h4>
 	<hr/>

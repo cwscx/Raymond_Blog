@@ -7,7 +7,7 @@
 		if(is_string($title))
 		{
 			printf("
-				<h3 style='font-family: sans-serif'>
+				<h3 style='font-family: sans-serif, Trebuchet MS;'>
 					<a style='color:black' href='article.php?title=%s'>%s</a>
 					<span class='badge'>%s℉</span>
 				</h3>

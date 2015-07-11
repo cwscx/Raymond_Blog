@@ -1267,24 +1267,26 @@ h6 .small,
 h1,
 .h1 {
   font-size: 36px;
-  font-family: "Apple Chancery", "Lucida Calligraphy", "Papyrus", "Times New Roman", "cursive";
+  font-family: "Apple Chancery", "Lucida Calligraphy", "Times New Roman", sans-serif;
   color:#2c3e50;
 }
 h2,
 .h2 {
   font-size: 30px;
-  font-family: "Apple Chancery", "Lucida Calligraphy", "Papyrus", "Times New Roman", "cursive";
+  font-family: "Apple Chancery", "Lucida Calligraphy", "Times New Roman", sans-serif;
   color: #2c3e50;
 }
 h3,
 .h3 {
   font-size: 24px;
-  font-family: "Apple Chancery", "Lucida Calligraphy", "Papyrus", "Times New Roman", "cursive";
+  font-family:  "Apple Chancery", "Lucida Calligraphy", "Times New Roman", sans-serif;
   color: #2c3e50;
 }
 h4,
 .h4 {
   font-size: 18px;
+  font-family: sans-serif, "Trebuchet MS";
+  color: #2c3e50;
 }
 h5,
 .h5 {

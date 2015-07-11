@@ -1285,7 +1285,7 @@ h3,
 h4,
 .h4 {
   font-size: 18px;
-  font-family: "Palatino Linotype" ,sans-serif, "Trebuchet MS";
+  font-family: "Trebuchet MS", sans-serif, "Times New Roman", "Palatino Linotype" ;
   color: #2c3e50;
 }
 h5,

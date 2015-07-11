@@ -54,6 +54,11 @@
 		</div>
 		
 		<!-- sidebar -->
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 		<?php
 			sidebar_template();
 		?>

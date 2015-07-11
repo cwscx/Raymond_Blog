@@ -9,7 +9,7 @@
 
 		foreach($result as $row)
 		{
-			printf("<h5><a href='./article?title=%s'>%s</a></h5>",
+			printf("<h5><a href='./article.php?title=%s'>%s</a></h5>",
 				htmlspecialchars($row['title']),
 				htmlspecialchars($row['title']));
 		}

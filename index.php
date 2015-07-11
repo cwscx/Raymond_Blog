@@ -94,7 +94,7 @@
 					panigation($pages, $current_page, '', '');
 			}
 			else
-				//header('Location: ./404.php');
+				header('Location: ./404.php');
 
 			mysqli_close($db);
 		?>

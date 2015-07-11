@@ -1,8 +1,6 @@
 <div class="caption col-lg-offset-1 col-md-offset-1 col-lg-3 col-md-3 col-sm-4 hidden-xs">
 	<!-- Most popular 15 articles -->
-	<h4 style='font-family: sans-serif'>
-		<a style='color:#2c3e50;text-decoration:none'>Most popular Blogs</a>
-	</h4>
+	<h4>Most popular Blogs</h4>
 	<hr/>
 			
 	<?php
@@ -20,9 +18,7 @@
 
 
 	<!-- Most frequent tags -->
-	<h4 style='font-family: sans-serif'>
-		<a style='color:#2c3e50;text-decoration:none'>Most frequent Tags</a>
-	</h4>
+	<h4>Most frequent Tags</h4>
 	<hr/>
 
 	<?php

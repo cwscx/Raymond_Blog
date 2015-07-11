@@ -64,7 +64,7 @@
 					$db = sql_connection("blog");
 					try
 					{
-						$result = insert_article($db, $title, $category, $tags, $intro, $article);
+						$result = insert_article($db, $title, $category, $tags, $intro, htmlspecialchars($article));
 					}
 					catch(Exception $e)
 					{

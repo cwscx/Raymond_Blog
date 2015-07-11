@@ -13,9 +13,9 @@
 				</h3>
 				<hr/>
 				",
-				htmlspecialchars($title),
-				htmlspecialchars($title),
-				htmlspecialchars($clicks));
+				htmlspecialchars_decode($title),
+				htmlspecialchars_decode($title),
+				htmlspecialchars_decode($clicks));
 		}
 		else
 			throw new Exception('Title is required to be a String.');
@@ -46,18 +46,18 @@
 		printf("<p style='color:#999'>
 					Category:&nbsp;<a href='.?search=%s&val=%s'>%s</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 					",
-				htmlspecialchars('category'),
-				htmlspecialchars($category),
-				htmlspecialchars($category));
+				htmlspecialchars_decode('category'),
+				htmlspecialchars_decode($category),
+				htmlspecialchars_decode($category));
 
 		// Tags
 		print("Tags:&nbsp;&nbsp;");
 		foreach($tags_array as $value)
 		{	
 			printf("<a href='.?search=%s&val=%s'>%s</a>&nbsp;&nbsp;",
-					htmlspecialchars('tags'),
-					htmlspecialchars($value),
-					htmlspecialchars($value));
+					htmlspecialchars_decode('tags'),
+					htmlspecialchars_decode($value),
+					htmlspecialchars_decode($value));
 		}
 
 		// Date
@@ -65,7 +65,7 @@
 					Date:&nbsp;&nbsp;%s
 				</p>
 				", 
-				htmlspecialchars($time));
+				htmlspecialchars_decode($time));
 	}
 
 	/*
@@ -74,7 +74,7 @@
 	function intro($introduction)
 	{
 		if(is_string($introduction))
-			printf("<p>%s</p><br/>", htmlspecialchars($introduction));
+			printf("<p>%s</p><br/>", htmlspecialchars_decode($introduction));
 		else
 			throw new Exception("String is required for introduction.");
 	}
@@ -84,6 +84,7 @@
 	 */
 	function paragraphs($paragraphs)
 	{
+		echo '<br/>';
 		$paragraphs_array = array();
 		if(is_string($paragraphs))
 			$paragraphs_array = explode('\n', $paragraphs);
@@ -94,7 +95,7 @@
 
 		foreach($paragraphs_array as $para)
 		{
-			printf('<p>%s</p>', $para);    //htmlspecialchars deleted for tag uses
+			printf('<p>%s</p>', htmlspecialchars_decode($para));    //htmlspecialchars deleted for tag uses
 		}
 	}
 
@@ -123,8 +124,8 @@
 		{
 			printf("<a href='.?search=%s&val=%s' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
 					", 
-					htmlspecialchars($para),
-					htmlspecialchars($value));
+					htmlspecialchars_decode($para),
+					htmlspecialchars_decode($value));
 		}
 
 
@@ -148,8 +149,8 @@
 					{
 						printf("<li><a href='.?search=%s&val=%s'>%d</a></li>
 					",
-						htmlspecialchars($para),
-						htmlspecialchars($value),
+						htmlspecialchars_decode($para),
+						htmlspecialchars_decode($value),
 						$i);
 					}
 				}
@@ -164,8 +165,8 @@
 					{
 						printf("<li><a href='.?search=%s&val=%s&cp=%d'>%d</a></li>
 					", 
-						htmlspecialchars($para),
-						htmlspecialchars($value),
+						htmlspecialchars_decode($para),
+						htmlspecialchars_decode($value),
 						$i, $i);
 					}
 				}
@@ -186,8 +187,8 @@
 				{
 					printf("<li><a href='.?search=%s&val=%s&cp=%d'>%d</a></li>
 					", 
-					htmlspecialchars($para),
-					htmlspecialchars($value),
+					htmlspecialchars_decode($para),
+					htmlspecialchars_decode($value),
 					$i, $i);
 				}
 			}
@@ -206,8 +207,8 @@
 				{
 					printf("<li><a href='.?search=%s&val=%s&cp=%d'>%d</a></li>
 					", 
-					htmlspecialchars($para),
-					htmlspecialchars($value),
+					htmlspecialchars_decode($para),
+					htmlspecialchars_decode($value),
 					$i, $i);
 				}
 			}
@@ -232,8 +233,8 @@
 				</ul>
 			</nav>
 ", 
-					htmlspecialchars($para),
-					htmlspecialchars($value),
+					htmlspecialchars_decode($para),
+					htmlspecialchars_decode($value),
 					$pages);
 		}
 	}

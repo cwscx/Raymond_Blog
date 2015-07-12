@@ -52,10 +52,10 @@
 			{
 				$num = mysqli_num_rows($result);	// number of all corresponding query result
 				// Number of pages
-				if($num % 8 > 0)
-					$pages = intval($num / 8) + 1;
+				if($num % 5 > 0)
+					$pages = intval($num / 5) + 1;
 				else
-					$pages = intval($num / 8);
+					$pages = intval($num / 5);
 
 				// if cp(current page) is set, load it as the value of GET method
 				// otherwise, load it as the first page.
@@ -66,14 +66,14 @@
 
 				// Redo query for each page by setting limits
 				if(!isset($_GET['search']))
-					$result = blog_check_limits($db, '', '', ($current_page - 1) * 8, 8);
+					$result = blog_check_limits($db, '', '', ($current_page - 1) * 5, 5);
 				// When searched in the searching bar
 				else if($_GET['search'] === 'everything')
-					$result = blog_check_limits($db, 'everything', $_GET['val'], ($current_page - 1) * 8, 8);
+					$result = blog_check_limits($db, 'everything', $_GET['val'], ($current_page - 1) * 5, 5);
 				else if($_GET['search'] === 'category')
-					$result = blog_check_limits($db, 'category', $_GET['val'], ($current_page - 1) * 8, 8);
+					$result = blog_check_limits($db, 'category', $_GET['val'], ($current_page - 1) * 5, 5);
 				else if($_GET['search'] === 'tags')
-					$result = blog_check_limits($db, 'tags', $_GET['val'], ($current_page - 1) * 8, 8);
+					$result = blog_check_limits($db, 'tags', $_GET['val'], ($current_page - 1) * 5, 5);
 
 				// If the limited sql select has a result, print them out
 				if($result)

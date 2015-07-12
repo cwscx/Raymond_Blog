@@ -24,15 +24,9 @@
 	/* Insert the test article */
 	try{
 		insert_article($db, 'First essay', 'test', $tags, 
-			'Hello Blog! Here\'s the introduction of my first blog. There won\'t be too much material in my first 
-			blog, cuz this is simply for testing my blog works correctly with php and MySQL. There will be more
-			blogs. I promise.', 
-			'Hello Blog! Here\'s the main article of my first blog. There won\'t be too much material in my first 
-			blog, cuz this is simply for testing my blog works correctly with php and MySQL. There will be more
-			blogs. I promise.\\n You think there will be more material and paragraphs describing this website? 
-			Haha!\\n Sorry I need to work on the next milestone of this website! We\'ll meet soon! Never mind to
-			click the <a href=\'contact.php\'>contact</a> button on the upper right corner. It is my
-			honor to get advice and experience from you!');
+			'Hello Blog! Here\'s the introduction of my first blog. There won\'t be too much material in my first blog, cuz this is simply for testing my blog works correctly with php and MySQL. There will be more blogs. I promise.', 'Hello Blog! Here\'s the main article of my first blog. There won\'t be too much material in my first blog, cuz this is simply for testing my blog works correctly with php and MySQL. There will be more blogs. I promise.\\n 
+			You think there will be more material and paragraphs describing this website? Haha!\\n 
+			Sorry I need to work on the next milestone of this website! We\'ll meet soon! Never mind to click the <a href=\'contact.php\'>contact</a> button on the upper right corner. It is my honor to get advice and experience from you!');
 	}catch(Exception $e){
 		// Do nothing here
 		// echo $e -> getMessage();

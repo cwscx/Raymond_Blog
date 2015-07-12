@@ -30,6 +30,26 @@
 
 			$ok = true;
 
+			if(isset($_POST['load']))
+			{
+				$db = sql_connection('blog');
+				$result = get_blog_by_title($db, $_POST['title']);
+
+				if($result)
+				{
+					$row = mysqli_fetch_assoc($result);
+					$title = htmlspecialchars_decode($row['title']);
+					$category = htmlspecialchars_decode($row['category']);
+					$tags = htmlspecialchars_decode($row['tags']);
+					$intro = htmlspecialchars_decode($row['intro']);
+					$article = htmlspecialchars_decode($row['article']);
+
+					mysqli_close($db);
+				}
+				else
+					echo "No such blog is in the database";
+			}
+
 			// if the submit button is clicked, check and store each value
 			if(isset($_POST['submit']))
 			{
@@ -68,7 +88,7 @@
 					}
 					catch(Exception $e)
 					{
-						echo $e -> getMessage();
+						$result = update_article($db, $title, $category, $tags, $intro, htmlspecialchars($article));
 					}
 					
 					mysqli_close($db);
@@ -85,6 +105,8 @@
 			<form action="" method="post">
 				<div class="form-group">
 					<label for="title">Title</label>
+					<!-- Only when type is sumbit, the click can be put into $_POST array. type='button' doesn't work -->
+					<input class="btn btn-primary" type="submit" name="load" value="Load">
 					<input type="text" name="title" class="form-control" 
 						   placeholder="e.g. The difference between require and require_once in PHP" value="<?php 
 						   		echo $title;

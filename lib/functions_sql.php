@@ -252,12 +252,56 @@
 			throw new Exception('The title alreasy exists.');
 	}
 
+
+	/*
+	 * This funciton will update the article already exists in db
+	 */
+	function update_article($db, $title, $category, $tags, $intro, $article)
+	{
+		$string_array = '';
+
+		// Check whether tags is an array and its length.
+		if(is_array($tags))
+		{
+			if(sizeof($tags) > 4)
+				throw new Exception('Tag Discription of this article is too long.');
+				
+			$string_array = implode(',', $tags);
+		}
+		else if(is_string($tags))
+			$string_array = $tags;
+		else
+			throw new Exception('Tag needs to be either an array or an array in string form.');
+
+		// printf's parameters' %s must be surrounded with ''
+		$sql = sprintf("UPDATE blog.articles SET category='%s', tags='%s', intro='%s', article='%s' WHERE title='%s'",
+						mysqli_real_escape_string($db, $category),
+						mysqli_real_escape_string($db, $tags),
+						mysqli_real_escape_string($db, $intro),
+						mysqli_real_escape_string($db, $article),
+						mysqli_real_escape_string($db, $title));
+		$result = mysqli_query($db, $sql);
+
+		return $result;	
+	}
+
 	/*
 	 * Auto increase the clicks of a blog by 1
 	 */
 	function update_clicks($db, $title)
 	{
 		$sql = sprintf("UPDATE blog.articles SET clicks = (clicks + 1) WHERE title = '%s'", $title);
+
+		$result = mysqli_query($db, $sql);
+		return $result;
+	}
+
+	/*
+	 * Get a blog's click
+	 */
+	function get_click($db, $title)
+	{
+		$sql = sprintf("SELECT clicks FROM blog.articles WHERE title = '%s'", $title);
 
 		$result = mysqli_query($db, $sql);
 		return $result;

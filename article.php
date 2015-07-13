@@ -36,7 +36,7 @@
 			category_template();
 		?>
 
-		<div class='caption col-lg-8 col-md-8'>
+		<div class='caption col-lg-8 col-md-8' style="background-color:#F8F8F8;">
 			<?php
 				// This for loop will be executed only once...
 				// Since the title is unique.

@@ -94,6 +94,7 @@
 							$result = update_article($db, $title, $category, $tags, $intro, htmlspecialchars($article));
 						}
 						mysqli_close($db);
+						echo "Success";
 					}					
 				}
 			}

@@ -43,11 +43,11 @@
 					$tags = htmlspecialchars_decode($row['tags']);
 					$intro = htmlspecialchars_decode($row['intro']);
 					$article = htmlspecialchars_decode($row['article']);
-
-					mysqli_close($db);
 				}
 				else
 					echo "No such blog is in the database";
+
+				mysqli_close($db);
 			}
 
 			// if the submit button is clicked, check and store each value
@@ -81,17 +81,20 @@
 				// If everyting is entered. store it
 				if($ok)
 				{
-					$db = sql_connection("blog");
-					try
+					$db = sql_connection_with_pw("blog", $_POST['pw']);
+
+					if(isset($db))
 					{
-						$result = insert_article($db, $title, $category, $tags, $intro, htmlspecialchars($article));
-					}
-					catch(Exception $e)
-					{
-						$result = update_article($db, $title, $category, $tags, $intro, htmlspecialchars($article));
-					}
-					
-					mysqli_close($db);
+						try
+						{
+							$result = insert_article($db, $title, $category, $tags, $intro, htmlspecialchars($article));
+						}
+						catch(Exception $e)
+						{
+							$result = update_article($db, $title, $category, $tags, $intro, htmlspecialchars($article));
+						}
+						mysqli_close($db);
+					}					
 				}
 			}
 		?>
@@ -143,6 +146,10 @@
 						echo $article;
 					?></textarea>
 				</div>
+				<hr/>
+				<label for="pw">Password</label>
+				<input type="password" name="pw" class="form-control"/>
+				<br/>
 				<input class="btn btn-primary" type="submit" name="submit" value="Sumbit" />
 			</form>
 		</div>

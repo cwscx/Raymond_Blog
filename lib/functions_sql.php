@@ -1,5 +1,5 @@
 <?php
-/*
+	/*
 	 * Build up sql connection of given database. 
 	 * If the given name is not created, create one new database.
 	 * Return the db connection.
@@ -25,6 +25,45 @@
 			throw new Exception("String parameter required.");
 	}
 
+	/*
+	 * Build up sql connection of given database with password required. 
+	 * If the given name is not created, create one new database.
+	 * Return the db connection.
+	 */
+	function sql_connection_with_pw($db_name, $pw)
+	{
+		/* Check if the passed in db name is a string */
+		if(is_string($db_name))
+		{
+			try
+			{
+				$db = mysqli_connect('localhost', 'root', $pw);
+			}
+			catch (Exception $e)
+			{
+				return NULL;
+			}
+			
+			if($db)
+			{
+				if($db_name === '')		// Default db name is blog
+					$db_name = "blog";
+
+				$sql = sprintf("CREATE DATABASE %s", mysqli_real_escape_string($db, $db_name));
+				$result = mysqli_query($db, $sql);	// Create the db in case the db is not created.
+
+				// Build the connection
+				$db = mysqli_connect('localhost', 'root', 'Ray@1224', $db_name);
+
+				return $db;
+			}
+			else
+				return NULL;
+
+		}
+		else
+			throw new Exception("String parameter required.");
+	}
 	/*
 	 * Check whether the passed in key-value pair exists. 
 	 * If exist, return the result. Else return NULL.

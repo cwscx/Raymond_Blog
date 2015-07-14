@@ -109,11 +109,12 @@
 				<div class="form-group">
 					<label for="title">Title</label>
 					<!-- Only when type is sumbit, the click can be put into $_POST array. type='button' doesn't work -->
-					<input class="btn btn-primary" type="submit" name="load" value="Load">
 					<input type="text" name="title" class="form-control" 
 						   placeholder="e.g. The difference between require and require_once in PHP" value="<?php 
 						   		echo $title;
 						   ?>" >
+					<br/>
+					<input class="btn btn-primary" type="submit" name="load" value="Load">
 				</div>
 				<div class="form-group">
 					<label for="category">Category</label>

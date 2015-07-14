@@ -95,7 +95,9 @@
 						}
 						mysqli_close($db);
 						echo "Success";
-					}					
+					}
+					else
+						echo "Permission denied";				
 				}
 			}
 		?>

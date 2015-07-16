@@ -27,7 +27,7 @@
 			<hr/>
 			<p>UCSD(University of California, San Diego) third year student</p>
 			<p>Major in Computer Science</p>
-			<p><a href="https://github.com/cwscx">@github</a>, <a href="https://www.facebook.com/shengyang.shi.1">@fb</a></p>
+			<p><a href="https://www.facebook.com/shengyang.shi.1">@fb</a></p>
 			<p>wechat: cwscx941224</p>
 			<img src="assets/wechatbinary.jpg" width="130px">
 		</div>

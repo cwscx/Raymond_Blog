@@ -1,4 +1,5 @@
 <?php
+	require_once("../lib/function_sql_connection_pw_provided.php");
 	require_once("../lib/functions_template.php");
 	require_once("../lib/functions_sql.php");
 

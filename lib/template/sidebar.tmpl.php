@@ -10,8 +10,8 @@
 		foreach($result as $row)
 		{
 			printf("<h5><a href='./article.php?title=%s'>%s</a></h5>",
-				htmlspecialchars($row['title']),
-				htmlspecialchars($row['title']));
+				urlencode($row['title']),
+				htmlspecialchars_decode($row['title']));
 		}
 	?>
 	<br/>

@@ -218,7 +218,7 @@
 		for($i = 0; $i < ((sizeof($freq_array) <= 8) ? sizeof($freq_array) : 8); $i++)
 		{
 			printf("<h5><a href='.?search=tags&val=%s'>%s</a></h5>",
-				htmlspecialchars($keys[$i]),
+				urlencode($keys[$i]),
 				htmlspecialchars($keys[$i]));
 		}
 	}

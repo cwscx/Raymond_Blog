@@ -1,7 +1,7 @@
 <?php
 	// Redirection for navbar searching
 	if (isset($_POST['submit']))
-		header(sprintf('Location: .?search=everything&val=%s', $_POST['search']));
+		header(sprintf('Location: .?search=everything&val=%s', urlencode($_POST['search'])));
 ?>
 
 <!-- navbar -->

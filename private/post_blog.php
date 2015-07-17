@@ -88,11 +88,19 @@
 					{
 						try
 						{
-							$result = insert_article($db, $title, $category, $tags, $intro, htmlspecialchars($article));
+							$result = insert_article($db, htmlspecialchars($title), 
+														  htmlspecialchars($category), 
+														  htmlspecialchars($tags), 
+														  htmlspecialchars($intro), 
+														  htmlspecialchars($article));
 						}
 						catch(Exception $e)
 						{
-							$result = update_article($db, $title, $category, $tags, $intro, htmlspecialchars($article));
+							$result = update_article($db, htmlspecialchars($title), 
+														  htmlspecialchars($category), 
+														  htmlspecialchars($tags), 
+														  htmlspecialchars($intro), 
+														  htmlspecialchars($article));
 						}
 						mysqli_close($db);
 						echo "Success";

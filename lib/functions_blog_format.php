@@ -13,7 +13,7 @@
 				</h3>
 				<hr/>
 				",
-				htmlspecialchars_decode($title),
+				urlencode($title),
 				htmlspecialchars_decode($title),
 				htmlspecialchars_decode($clicks));
 		}
@@ -46,8 +46,8 @@
 		printf("<p style='color:#999'>
 					Category:&nbsp;<a href='.?search=%s&val=%s'>%s</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 					",
-				htmlspecialchars_decode('category'),
-				htmlspecialchars_decode($category),
+				urlencode('category'),
+				urlencode($category),
 				htmlspecialchars_decode($category));
 
 		// Tags
@@ -55,8 +55,8 @@
 		foreach($tags_array as $value)
 		{	
 			printf("<a href='.?search=%s&val=%s'>%s</a>&nbsp;&nbsp;",
-					htmlspecialchars_decode('tags'),
-					htmlspecialchars_decode($value),
+					urlencode('tags'),
+					urlencode($value),
 					htmlspecialchars_decode($value));
 		}
 
@@ -124,8 +124,8 @@
 		{
 			printf("<a href='.?search=%s&val=%s' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
 					", 
-					htmlspecialchars_decode($para),
-					htmlspecialchars_decode($value));
+					urlencode($para),
+					urlencode($value));
 		}
 
 
@@ -149,8 +149,8 @@
 					{
 						printf("<li><a href='.?search=%s&val=%s'>%d</a></li>
 					",
-						htmlspecialchars_decode($para),
-						htmlspecialchars_decode($value),
+						urlencode($para),
+						urlencode($value),
 						$i);
 					}
 				}
@@ -159,15 +159,15 @@
 					if($para === '' && $value === '')
 					{
 						printf("<li><a href='.?cp=%d'>%d</a></li>
-					", $i, $i);
+					", urlencode($i), $i);
 					}
 					else
 					{
 						printf("<li><a href='.?search=%s&val=%s&cp=%d'>%d</a></li>
 					", 
-						htmlspecialchars_decode($para),
-						htmlspecialchars_decode($value),
-						$i, $i);
+						urlencode($para),
+						urlencode($value),
+						urlencode($i), $i);
 					}
 				}
 			}
@@ -181,15 +181,15 @@
 				if($para === '' && $value === '')
 				{
 					printf("<li><a href='.?cp=%d'>%d</a></li>
-					", $i, $i);
+					", urlencode($i), $i);
 				}
 				else
 				{
 					printf("<li><a href='.?search=%s&val=%s&cp=%d'>%d</a></li>
 					", 
-					htmlspecialchars_decode($para),
-					htmlspecialchars_decode($value),
-					$i, $i);
+					urlencode($para),
+					urlencode($value),
+					urlencode($i), $i);
 				}
 			}
 		}
@@ -201,15 +201,15 @@
 				if($para === '' && $value === '')
 				{
 					printf("<li><a href='.?cp=%d'>%d</a></li>
-					", $i, $i);
+					", urlencode($i), $i);
 				}
 				else
 				{
 					printf("<li><a href='.?search=%s&val=%s&cp=%d'>%d</a></li>
 					", 
-					htmlspecialchars_decode($para),
-					htmlspecialchars_decode($value),
-					$i, $i);
+					urlencode($para),
+					urlencode($value),
+					urlencode($i), $i);
 				}
 			}
 		}
@@ -233,9 +233,9 @@
 				</ul>
 			</nav>
 ", 
-					htmlspecialchars_decode($para),
-					htmlspecialchars_decode($value),
-					$pages);
+					urlencode($para),
+					urlencode($value),
+					urlencode($pages));
 		}
 	}
 ?>

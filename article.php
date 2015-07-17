@@ -5,6 +5,7 @@
 	require_once(dirname(__FILE__) . "/lib/functions_sql.php");
 
 	// Get the paragraph's name
+	// $_GET has already been urldecoded by default
 	$para_name = $_GET['title'];
 	$db = sql_connection('blog');
 
@@ -13,7 +14,7 @@
 
 	// If nothing is found from db, redirect to 404 page...
 	if(!$result)
-		header('Location: ./404.php');
+		//header('Location: ./404.php');
 	
 	session_start();
 	$_SESSION['current-page'] = NULL;

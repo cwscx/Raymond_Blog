@@ -96,6 +96,8 @@
 						}
 						catch(Exception $e)
 						{
+							print $e.message
+							print "xxxxx"
 							$result = update_article($db, htmlspecialchars($title), 
 														  htmlspecialchars($category), 
 														  htmlspecialchars($tags), 

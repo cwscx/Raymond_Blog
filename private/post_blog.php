@@ -93,19 +93,21 @@
 														  htmlspecialchars($tags), 
 														  htmlspecialchars($intro), 
 														  htmlspecialchars($article));
+							print "Inserted";
 						}
 						catch(Exception $e)
 						{
-							print $e.message
-							print "xxxxx"
+							print $e.message;
+							print "xxxxx";
 							$result = update_article($db, htmlspecialchars($title), 
 														  htmlspecialchars($category), 
 														  htmlspecialchars($tags), 
 														  htmlspecialchars($intro), 
 														  htmlspecialchars($article));
+							print "Updated";
 						}
 						mysqli_close($db);
-						echo "Success";
+						echo " successfully.";
 					}
 					else
 						echo "Permission denied";				

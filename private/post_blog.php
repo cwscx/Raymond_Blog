@@ -93,7 +93,7 @@
 														  htmlspecialchars($tags), 
 														  htmlspecialchars($intro), 
 														  htmlspecialchars($article));
-							print $result;
+							print $result == false;
 							print "Inserted";
 						}
 						catch(Exception $e)

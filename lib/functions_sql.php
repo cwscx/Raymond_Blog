@@ -258,7 +258,13 @@
 							mysqli_real_escape_string($db, $intro),
 							mysqli_real_escape_string($db, $article),
 							0);
+			print $sql;
+			echo "\n isset(db): ";
+			print isset($db);
 			$result = mysqli_query($db, $sql);
+			print "\nresult ==false: ";
+			print $result == false;
+			print "\n";
 			return $result;
 		}
 		else

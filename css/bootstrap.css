@@ -6806,4 +6806,13 @@ button.close {
     display: none !important;
   }
 }
+
+.article {
+  background: #F8F8F8;
+  font-family:Verdana, "Palatino",sans-serif, "Time New Roman";
+  padding:20px 50px 20px 50px;
+  margin-top:50px;
+  line-height:25px;
+  color: #2c3e50;
+}
 /*# sourceMappingURL=bootstrap.css.map */

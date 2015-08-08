@@ -23,7 +23,7 @@
 	?>
 
 		<div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 article" >
-			<h2 style="font-family: sans-serif; color:#2c3e50">About me</h2>
+			<h2 style="font-family: sans-serif, 'Trebuchet MS'; color:#2c3e50">About me</h2>
 			<hr/>
 			<h4>Hello There!</h4>
 			<br/>

@@ -6,7 +6,7 @@
 	require_once(dirname(__FILE__) . "/lib/init.php");
 
 	// Store the current page
-	session_start();
+	// session_start();
 	$_SESSION['current-page'] = 'index';
 ?>
 

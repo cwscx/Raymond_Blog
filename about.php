@@ -27,7 +27,7 @@
 			<hr/>
 			<h4>Hello There!</h4>
 			<br/>
-			<p>I am Shengyang Shi (also by the name Raymond), a thrid year undergraduate student at <a href="https://ucsd.edu/">UC San Diego</a> and an current intern in <a href="https://www.salesforce.com/">Salesforce.com . </a> </p>
+			<p>I am Shengyang Shi (also by the name Raymond), a thrid year undergraduate student at <a href="https://ucsd.edu/">UC San Diego</a> and a current intern in <a href="https://www.salesforce.com/">Salesforce.com . </a> </p>
 
 			<p>I do enjoy my major, Computer Science, and have passion for Statistics and Social Science. 
 				My fields of interests include:
@@ -57,8 +57,8 @@
 			</p>
 			<br/>
 			<p>
-				Technically, I started learning Computer Science and coding since University. It's a little bit late comparing to those true geeks
-				who wrote their first 'Hello World' program in Java or Python in middle school. But I do enjoy my own pace, and hunger 
+				Technically, I started learning Computer Science and coding since University. It's a little bit late comparing to those geeks
+				who wrote their first 'Hello World' program in middle school. But I do enjoy my own pace, and hunger 
 				for learning new knowledge. It looks like my passion will last for a long time. 
 			</p>
 			<br/>
@@ -69,8 +69,8 @@
 			<p>
 				Other interesting things about me:
 				<ul>
-					<li>I play violin since 5. But my mom told me that the music I played sounded like sawing woods. O.o</li>
-					<li>The genre of books I love most is history.</li>
+					<li>I play violin since 5. But my mom told me that the music I played sounded like sawing woods. The most recent music I'm practicing is the "Schindler's List".</li>
+					<li>The genres of books I love most are history and detective.</li>
 					<li>I like Python and Java. Wait, then why do I use PHP for this website? Ehh, I just wanna try something new.</li>
 					<li>I have acrophobia. Roller-Coaster is literally a life-once experience to me.</li>
 					<li>I love my family. I like my friends. I am passionate about my life.</li>
@@ -86,6 +86,7 @@
 				<ul>
 					<li><a href="https://www.facebook.com/shengyang.shi.1">@fb</a></li>
 					<li><a href="https://www.linkedin.com/pub/shengyang-shi/b0/2b2/84">@linkedin</a></li>
+					<li><a href="https://github.com/cwscx?tab=repositories">@github</a></li>
 					<li>wechat: cwscx941224</li>
 					<li><img src="assets/wechatbinary.jpg" width="130px"></li>
 				</ul>

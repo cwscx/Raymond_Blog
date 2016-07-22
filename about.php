@@ -27,44 +27,53 @@
 			<hr/>
 			<h4>Hello There!</h4>
 			<br/>
-			<p>I am Shengyang Shi (also by the name Raymond), a second year undergraduate student at UC San Diego. 
-			I do enjoy my major, Computer Science, and have passion for Statistics and Social Science. 
-			In the summer of 2015, I contributed to the development of Cat Grapes Online Education, where I worked on the ios/Android
-			backend. The apps and the website will be deployed soon. I'll update as soon as it's available. Currently, I am doing research with Professor 
-			<a href="http://genedesk.ucsd.edu/home/">Debashis Sahoo</a> at UC San Diego.</p>
-			<br/>
-			<p>
+			<p>I am Shengyang Shi (also by the name Raymond), a thrid year undergraduate student at <a href="https://ucsd.edu/">UC San Diego</a> and an current intern in <a href="https://www.salesforce.com/">Salesforce.com . </a> </p>
+
+			<p>I do enjoy my major, Computer Science, and have passion for Statistics and Social Science. 
 				My fields of interests include:
 				<ul>
-					<li>Artificial Intelligence</li>
-					<li>Data Mining</li>
-					<li>Computer Vision</li>
+					<li>Web Development</li>
+						<ul>
+							<li><a href="http://raymondssy.com/">Raymond Blog</a> (<a href="https://github.com/cwscx/Raymond_Blog">source code</a>)</li>
+							<li><a href="https://budget-controller.herokuapp.com/">Budget Controller</a> (<a href="https://github.com/cwscx/budget-controller">source code</a>)</li>
+							<li>Source code for other websites, please refer to my <a href="https://github.com/cwscx?tab=repositories">github</a> account.</li>
+						</ul>
+					<li>AI</li>
+						<ul>
+							<li>Machine Learning:</li>
+								<ul>
+									<li><a href="https://github.com/cwscx/RNN_Article_Trainer">RNN Article Trainer</a></li>
+								</ul>
+							<li>Articial Intelligence</li>
+								<ul>
+									<li><a href="https://github.com/cwscx/fantastic_maze">Robot Operating System Package: Fantastic Maze</a></li>
+									<li><a href="https://github.com/cwscx/Berkeley-AI-Pacman">Pacman</a></li>
+								</ul>
+						</ul>
+					<li>Infrastructure</li>
 					<li>Algorithms</li>
-					<li>Backend maintainence and development</li>
-					<li>ios/Android development</li>
-					<li>Bioinformatics</li>
 					<li>and many many more!</li>
 				</ul>
 			</p>
 			<br/>
 			<p>
-				I started learning Computer Science and coding since University. It's a little bit late comparing to those true geeks
+				Technically, I started learning Computer Science and coding since University. It's a little bit late comparing to those true geeks
 				who wrote their first 'Hello World' program in Java or Python in middle school. But I do enjoy my own pace, and hunger 
 				for learning new knowledge. It looks like my passion will last for a long time. 
 			</p>
 			<br/>
 			<p>
-				I like playing basketball and soccer, and enjoy watching tennis and other sports. I support Manchester United and Huston Rockets.
-				If you are also fans of them, let's hang out! ^v^
+				Personally, I love sports, music, food and etc. Machester United is my favourite team. Jay Chou is my favourite singer. And I love any food that tastes good. OMG but food in SF is really expensive. T^T
 			</p>
 			<br/>
 			<p>
 				Other interesting things about me:
 				<ul>
-					<li>I played violin since 5. But I seldomly play it now. One of my friend told me that the music I played sounded like sawing woods.</li>
-					<li>My favorite singers are Jay Chou and Eason Chen.</li>
-					<li>I like playing Hearthstone!</li>
-					<li>I plan to go to Atlanta this Novermember! Yellow Stone and Yosomite in the next year!</li>
+					<li>I play violin since 5. But my mom told me that the music I played sounded like sawing woods. O.o</li>
+					<li>The genre of books I love most is history.</li>
+					<li>I like Python and Java. Wait, then why do I use PHP for this website? Ehh, I just wanna try something new.</li>
+					<li>I have acrophobia. Roller-Coaster is literally a life-once experience to me.</li>
+					<li>I love my family. I like my friends. I am passionate about my life.</li>
 				</ul>
 			</p>
 			<br/>

@@ -159,7 +159,7 @@
 		$freq_array = array();
 
 		// Store all the existing tags in an array
-		foreach($result as $row)
+		while($row = $result -> fetch_assoc())
 		{
 			$tags_array = explode(',', $row['tags']);
 			for($i = 0; $i < sizeof($tags_array); $i++)

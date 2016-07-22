@@ -6,7 +6,7 @@
 	require_once(dirname(__FILE__) . "/lib/init.php");
 
 	// Store the current page
-	// session_start();
+	session_start();
 	$_SESSION['current-page'] = 'index';
 ?>
 
@@ -47,9 +47,9 @@
 				$result = blog_check_exist($db, 'category', $_GET['val']);
 			else if($_GET['search'] === 'tags')
 				$result = blog_check_exist($db, 'tags', $_GET['val']);
-				
+			
 			// If a not null result is reached by the select command
-			if($result)
+			if($result != null)
 			{
 				$num = mysqli_num_rows($result);	// number of all corresponding query result
 				// Number of pages
@@ -57,7 +57,6 @@
 					$pages = intval($num / 5) + 1;
 				else
 					$pages = intval($num / 5);
-
 				// if cp(current page) is set, load it as the value of GET method
 				// otherwise, load it as the first page.
 				if(isset($_GET['cp']))
@@ -77,9 +76,9 @@
 					$result = blog_check_limits($db, 'tags', $_GET['val'], ($current_page - 1) * 5, 5);
 
 				// If the limited sql select has a result, print them out
-				if($result)
+				if($result != null)
 				{
-					foreach($result as $row)
+					while($row = $result -> fetch_assoc())
 					{
 						// Title, info and introduction for the article
 						title($row['title'], $row['clicks']);

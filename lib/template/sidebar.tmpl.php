@@ -7,7 +7,7 @@
 		$db = sql_connection('blog');
 		$result = get_blog_by_clicks($db);
 
-		foreach($result as $row)
+		while($row = $result -> fetch_assoc())
 		{
 			printf("<h5><a href='./article.php?title=%s'>%s</a></h5>",
 				urlencode($row['title']),

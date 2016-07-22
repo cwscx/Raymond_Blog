@@ -18,10 +18,8 @@
 	)";
 	$result = mysqli_query($db, $sql);
 	
-	$tags = array();
-	$tags = ['test', 'blog'];
+	$tags = array('test', 'blog');
 
-	/* Insert the test article */
 	try{
 		insert_article($db, 'First essay', 'test', $tags, 
 			'Hello Blog! Here\'s the introduction of my first blog. There won\'t be too much material in my first blog, cuz this is simply for testing my blog works correctly with php and MySQL. There will be more blogs. I promise.', 'Hello Blog! Here\'s the main article of my first blog. There won\'t be too much material in my first blog, cuz this is simply for testing my blog works correctly with php and MySQL. There will be more blogs. I promise.\\n 
@@ -31,7 +29,6 @@
 		// Do nothing here
 		// echo $e -> getMessage();
 	}
-
 	// Create another table to store users' comments
 	$sql = "CREATE TABLE advice
 	(
@@ -43,6 +40,6 @@
 		comment text(65535) NOT NULL
 	)";
 	$result = mysqli_query($db, $sql);
-
+	
 	mysqli_close($db);
 ?>

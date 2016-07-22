@@ -42,7 +42,7 @@
 			<?php
 				// This for loop will be executed only once...
 				// Since the title is unique.
-				foreach($result as $row)
+				while($row = $result -> fetch_assoc())
 				{
 					title($row['title'], $row['clicks']);
 					info($row['category'], $row['tags'], $row['time']);
